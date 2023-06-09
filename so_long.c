@@ -37,15 +37,9 @@ int	main(int ac, char **av)
 //		check_args(&game, ac, av);
 		start_map(&game);
 		get_width(&game, fd_w);
-		ft_printf("width: %d\n", game.width);
 		close(fd_w);
 		get_height(&game, fd_h);
-		ft_printf("height: %d\n", game.height);
-		ft_printf("player: %d\n", game.player);
-		ft_printf("exit: %d\n", game.exit);
-		ft_printf("collect: %d\n", game.collect);
 		close(fd_h);
-	//	close(fd);
 	}
 	return (0);
 }
