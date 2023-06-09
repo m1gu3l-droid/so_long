@@ -6,7 +6,7 @@
 #    By: fnovais- <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/03 04:17:23 by fnovais-          #+#    #+#              #
-#    Updated: 2023/06/03 04:25:55 by fnovais-         ###   ########.fr        #
+#    Updated: 2023/06/09 21:21:00 by fnovais-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,13 +16,15 @@ CFLAGS = -Wall -Wextra -Werror
 
 LIBFT = ./libft/libft.a
 
-GNL = ./get_next_line/gnl.a
+#MLX = ./minilibx-linux
 
 RM = rm -f
 
 SO_LONG = so_long
 
-SRC = so_long.c
+SRC = so_long.c map_validation/read_map.c \
+	gnl/get_next_line.c gnl/get_next_line_utils.c gnl/get_height.c gnl/get_width.c \
+	gnl/ft_strchr_gnl.c
 
 OBJ = $(SRC:.c=.o)
 
@@ -31,20 +33,19 @@ all: $(SO_LONG)
 $(LIBFT):
 	$(MAKE) -C ./libft
 
-$(GNL):
-	$(MAKE) -C ./get_next_line
+#$(MLX):
+#	$(MAKE) -C ./minilibx-linux
 
-$(SO_LONG): $(OBJ) $(LIBFT) $(GNL)
-	$(CC) $(CFLAGS) $(OBJ) $(LIBFT) $(GNL) -o so_long
+$(SO_LONG): $(OBJ) $(LIBFT)
+	$(CC) $(CFLAGS) $(OBJ) $(LIBFT) -o so_long
 
 clean:
 	$(MAKE) clean -C ./libft
-	$(MAKE) clean -C ./get_next_line
+#	$(MAKE) clean -C ./minilibx-linux
 	$(RM) $(OBJ)
 
 fclean: clean
 	$(MAKE) fclean -C ./libft
-	$(MAKE) fclean -C ./get_next_line
 	$(RM) $(SO_LONG)
 
 re: clean fclean all

@@ -10,42 +10,28 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
 #include "../so_long.h"
 
-void	get_height(t_map *game, int fd)
+int	ft_strlen_width(char *str)
 {
-	char	*line;
-	int	h;
-	int	p;
-	int	e;
-	int	c;
+	int	i;
 	
-	h = 0;
-	p = 0;
-	e = 0;
-	c = 0;
-	while ((line = get_next_line(fd)) != NULL)
-	{
-		if (ft_strchr_gnl(line, 'P') != 0)
-			game->player += ft_strchr_gnl(line, 'P');
-		if (ft_strchr_gnl(line, 'E') != 0)
-			game->exit += ft_strchr_gnl(line, 'E');
-		if (ft_strchr_gnl(line, 'C') != 0)
-			game->collect += ft_strchr_gnl(line, 'C');
-		h++;
-	}
-	game->height = h;
+	i = 0;
+	while (str[i] != '\0' && str[i] != '\n')
+		i++;
+	return (i);
 }
-/*
-void	get_height(t_map *game, int fd)
+
+void	get_width(t_map *game, int fd)
 {
-	char	*line;
-	int	h;
-	
-	h = 0;
-	while ((line = get_next_line(fd)) != NULL)
-		h++;
-	game->height = h;
+	int		w;
+	static char	*buffer;
+
+	if (fd < 0 || BUFFER_SIZE <= 0)
+		return;
+	buffer = read_line(fd, buffer);
+	if (!buffer)
+		return;
+	w = ft_strlen_width((char *)buffer);
+	game->width = w;
 }
-*/
