@@ -12,27 +12,40 @@
 
 #include "so_long.h"
 
+void	start_map(t_map *game)
+{
+	game->width = 0;
+	game->height = 0;
+	game->player = 0;
+	game->collect = 0;
+	game->exit = 0;
+}
+
 int	main(int ac, char **av)
 {
 	if (ac == 2)
 	{
-		int	fd;
-		int	a;
-		t_map	map;
+		//int	fd_g;
+		int	fd_w;
+		int	fd_h;
+		t_map	game;
 		
-		a = 0;
-		fd = open(av[1], O_RDONLY);
-		if (fd == -1)
+		fd_w = open(av[1], O_RDONLY);
+		fd_h = open(av[1], O_RDONLY);
+		if (fd_w == -1 || fd_h == -1)
 			return 1;
-		char *line;
-		while ((line = get_next_line(fd)) != NULL)
-		{
-			map.layout[a] = line;
-			ft_printf("%s", map.layout[a]);
-			free(line);
-			a++;
-		}
-		close(fd);
+//		check_args(&game, ac, av);
+		start_map(&game);
+		get_width(&game, fd_w);
+		ft_printf("width: %d\n", game.width);
+		close(fd_w);
+		get_height(&game, fd_h);
+		ft_printf("height: %d\n", game.height);
+		ft_printf("player: %d\n", game.player);
+		ft_printf("exit: %d\n", game.exit);
+		ft_printf("collect: %d\n", game.collect);
+		close(fd_h);
+	//	close(fd);
 	}
 	return (0);
 }

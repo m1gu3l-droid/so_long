@@ -12,13 +12,13 @@
 
 NAME = gnl.a
 
-CC = cc
+CC = cc -g
 
 RM = rm -f
 
 CFLAGS = -Wall -Wextra -Werror
 
-SRC = get_next_line.c get_next_line_utils.c
+SRC = get_next_line.c get_next_line_utils.c get_height.c get_width.c ft_strchr_gnl.c
 
 BONUS = get_next_line_bonus.c get_next_line_utils_bonus.c
 

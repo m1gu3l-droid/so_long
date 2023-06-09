@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-CC = cc
+CC = cc -g
 
 CFLAGS = -Wall -Wextra -Werror
 
@@ -45,6 +45,8 @@ clean:
 fclean: clean
 	$(MAKE) fclean -C ./libft
 	$(MAKE) fclean -C ./get_next_line
-	$(RM) $(PUSH_SWAP)
+	$(RM) $(SO_LONG)
 
 re: clean fclean all
+
+.SILENT:

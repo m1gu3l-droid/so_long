@@ -27,11 +27,27 @@
 # include <string.h>
 # include <stddef.h>
 # include <limits.h>
+# include "../so_long.h"
 
-size_t	ft_strlen(const char *s);
+typedef struct s_map
+{
+	int		width;
+	int		height;
+	int		collect;
+	int		player;
+	int		exit;
+	char	**layout;
+}	t_map;
+
+size_t	ft_strlen_gnl(const char *s);
+void	get_height(t_map *game, int fd);
+void	get_width(t_map *game, int fd);
+char	*next_line(char *s1);
+char	*read_line(int fd, char *s1);
 char	*get_next_line(int fd);
 char	*ft_cpy(char *dst);
 char	*ft_strchr(const char	*s, int c);
 char	*ft_join(char *s1, char *s2);
+int	ft_strchr_gnl(const char *s, int c);
 
 #endif

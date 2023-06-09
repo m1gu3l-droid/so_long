@@ -23,3 +23,15 @@
 //does map have only one exit?
 
 //does map have a valid path?
+
+
+	char *line;
+	while ((line = get_next_line(fd)) != NULL)
+	{
+		b = ft_strlen(line);
+		map.layout[a] = malloc(sizeof(char) * b + 1);
+		map.layout[a] = line;
+		ft_printf("%s", map.layout[a]);
+		free(line);
+		a++;
+	}

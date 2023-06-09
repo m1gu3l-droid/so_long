@@ -28,7 +28,7 @@
 # include <stddef.h>
 # include <limits.h>
 
-size_t	ft_strlen(const char *s);
+size_t	ft_strlen_gnl(const char *s);
 char	*get_next_line(int fd);
 char	*ft_cpy(char *dst);
 char	*ft_strchr(const char	*s, int c);

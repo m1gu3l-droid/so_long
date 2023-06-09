@@ -26,7 +26,7 @@ char	*next_line(char *s1)
 		free(s1);
 		return (NULL);
 	}
-	next = (char *)malloc(sizeof(char) * (ft_strlen(s1) - i + 1));
+	next = (char *)malloc(sizeof(char) * (ft_strlen_gnl(s1) - i + 1));
 	if (!next)
 		return (NULL);
 	i++;

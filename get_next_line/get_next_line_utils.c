@@ -48,7 +48,7 @@ char	*ft_strchr(const char	*s, int c)
 	if (!s)
 		return (NULL);
 	if (c == '\0')
-		return ((char *)s + ft_strlen(s));
+		return ((char *)s + ft_strlen_gnl(s));
 	while (s[index] != c)
 	{
 		if (s[index] == '\0')
@@ -71,7 +71,7 @@ char	*ft_join(char *s1, char *s2)
 	}
 	if (!s1 || !s2)
 		return (NULL);
-	new_s1 = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	new_s1 = malloc(sizeof(char) * (ft_strlen_gnl(s1) + ft_strlen_gnl(s2) + 1));
 	if (new_s1 == NULL)
 		return (NULL);
 	i = -1;
@@ -81,12 +81,12 @@ char	*ft_join(char *s1, char *s2)
 			new_s1[i] = s1[i];
 	while (s2[j] != '\0')
 		new_s1[i++] = s2[j++];
-	new_s1[ft_strlen(s1) + ft_strlen(s2)] = '\0';
+	new_s1[ft_strlen_gnl(s1) + ft_strlen_gnl(s2)] = '\0';
 	free(s1);
 	return (new_s1);
 }
 
-size_t	ft_strlen(const char *s)
+size_t	ft_strlen_gnl(const char *s)
 {
 	size_t	c;
 
