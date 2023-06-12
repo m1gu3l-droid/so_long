@@ -21,14 +21,15 @@ int	val_rectangular(t_map *game)
 	i = 0;
 	j = 0;
 	i = ft_strlen_width(game->layout[j]);
-	while (game->layout[++j])
+	while (j < game->height)
 	{
 		if (i != ft_strlen_width(game->layout[j]))
 			return (1);
+		j++;
 	}
 	return (0);
 }
-/* /is bounded
+//is bounded
 int	val_vault(t_map *game)
 {
 	int	i;
@@ -36,11 +37,11 @@ int	val_vault(t_map *game)
 
 	i = 0;
 	j = 0;
-	while (game->layout[j])
+	while (j < game->height)
 	{
-		while (game->layout[j][i])
+		while (i < game->width)
 		{
-			if ((j == 0 || j == game->height) && !(ft_strchr(&game->layout[j][i], 1)))
+			if ((j == 0 || j == game->height - 1) && (ft_strchr(&game->layout[j][i], '1') == NULL))
 				return (1);
 			i++;
 		}
@@ -48,19 +49,20 @@ int	val_vault(t_map *game)
 	}
 	i = 0;
 	j = 0;
-	while (game->layout[j])
+	while (j < game->height)
 	{
-		while (game->layout[j][i])
+		while (i < game->width)
 		{
-			if ((i == 0 || i == game->width) && !(ft_strchr(&game->layout[j][i], 1)))
+			if ((i == 0 || i == game->width - 1) && (ft_strchr(&game->layout[j][i], '1') == NULL))
 				return (1);
-			j++;
+			i++;
 		}
-		i++;
+		i = 0;
+		j++;
 	}
 	return (0);
 }
-*/
+
 //valid entities: 1 player, 1 exit, 1 or more collectibles
 int	val_characters(t_map *game)
 {
@@ -116,8 +118,8 @@ void	validations(t_map *game)
 {
 	if (val_rectangular(game) == 1)
 		quit_game("your map should be rectangular\n", game);
-//	if (val_vault(game) == 1)
-//		quit_game("your map should be surrounded by walls\n", game);
+	if (val_vault(game) == 1)
+		quit_game("your map should be surrounded by walls\n", game);
 	if (val_characters(game) == 1)
 		quit_game("your map should have 1 P, 1 E and 1 or more C's\n", game);
 	if (&val_path_param == false)

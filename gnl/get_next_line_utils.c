@@ -40,7 +40,7 @@ char	*ft_cpy(char *s1)
 	return (line_cpy);
 }
 
-char	*ft_strchr(const char	*s, int c)
+char	*ft_strchr_g(const char	*s, int c)
 {
 	size_t		index;
 

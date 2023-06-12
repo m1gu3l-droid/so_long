@@ -28,7 +28,8 @@ int	closure(t_map *game)
 		free_map(game);
 	free_sprite(game);
 	free_player(game);
-	ft_printf("Game Over!\nMoves: %d\n", game->moves);
+	if (game->dying == -1)
+		ft_printf("game over!\nmoves: %d\n", game->moves);
 	mlx_clear_window(game->mlx, game->win);
 	mlx_destroy_window(game->mlx, game->win);
 	mlx_destroy_display(game->mlx);

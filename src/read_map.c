@@ -33,7 +33,7 @@ void	read_map(t_map *game, int fd)
 	{
 		game->layout[i] = malloc(sizeof(char) * ft_strlen_rm(line) + 1);
 		game->layout[i] = line;
-		ft_printf("line %d: %s", i, game->layout[i]);
+		//ft_printf("line %d: %s", i, game->layout[i]);
 		i++;
 	}
 }

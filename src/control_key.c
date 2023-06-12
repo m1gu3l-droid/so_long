@@ -22,7 +22,7 @@ int	val_move(t_map *game, int y, int x, int key)
 		return (1);
 	if (game->score == 0 && game->layout[y][x] == 'E')
 	{
-		ft_printf("congrats! you won\n");
+		ft_printf("-.- boring -.- \n");
 		closure(game);
 	}
 	if (key != W && key != S && key != A && key != D)
@@ -47,7 +47,8 @@ void	input_move(t_map *game, int y, int x, int key)
 		if (game->layout[y][x] == 'E' && game->score > 0)
 		{
 			game->layout[col][row] = '0';
-			game->layout[y][x] = 'P';
+			game->layout[y][x] = 'E';
+			game->temp = 1;
 		}
 		if (game->layout[y][x] == 'E' && game->score == 0)
 		{
@@ -56,10 +57,16 @@ void	input_move(t_map *game, int y, int x, int key)
 		}
 		if (game->layout[y][x] == 'C' || game->layout[y][x] == '0')
 		{
-			game->layout[col][row] = '0';
+			if (game->temp == 1)
+			{
+				game->layout[col][row] = 'E';
+				game->temp = 0;
+			}
+			else
+				game->layout[col][row] = '0';
 			game->layout[y][x] = 'P';
 		}
-		ft_printf("move: %d", game->moves++);
+		ft_printf("move: %d\n", game->moves++);
 		render_img(game);
 	}
 }	
@@ -72,16 +79,19 @@ int	control_key(int key, t_map *game)
 	col = game->player_y;
 	row = game->player_x;
 	if (key == ESC)
+	{
+		game->dying = -1;
 		closure(game);
-	else if (key == W)
+	}
+	if (key == W)
 		col--;
-	else if (key == S)
+	if (key == S)
 		col++;
-	else if (key == A)
+	if (key == A)
 		row--;
-	else if (key == D)
+	if (key == D)
 		row++;
-	if (game->dying == -1)
+	if (game->dying != -1)
 		input_move(game, col, row, key);
 	return (0);
 }

@@ -43,8 +43,8 @@ void	get_dimensions(t_map *game, int fd)
 		}
 	game->height = h;
 	game->score = game->collect;
-	printf("h: %d\n", game->height);
-	printf("w: %d\n", game->width);
+	//printf("h: %d\n", game->height);
+	//printf("w: %d\n", game->width);
 	}
 }
 

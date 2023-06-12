@@ -19,9 +19,9 @@ void	start_position(t_map *game)
 
 	i = 0;
 	j = 0;
-	while (game->layout[i])
+	while (i < game->height)
 	{
-		while (game->layout[i][j])
+		while (j < game->width)
 		{	
 			if (game->layout[i][j] == 'P')
 			{
@@ -33,5 +33,5 @@ void	start_position(t_map *game)
 		j = 0;
 		i++;
 	}
-	ft_printf("player: %d, %d\n", game->player_x, game->player_y);
+	//ft_printf("player: %d, %d\n", game->player_x, game->player_y);
 }

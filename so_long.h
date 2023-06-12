@@ -6,7 +6,7 @@
 /*   By: fnovais- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 03:45:23 by fnovais-          #+#    #+#             */
-/*   Updated: 2023/06/12 03:32:28 by fnovais-         ###   ########.fr       */
+/*   Updated: 2023/06/12 23:14:20 by fnovais-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,18 +43,18 @@
 # define D 100
 # define ESC 65307
 
-typedef	struct	s_pic
+typedef	struct	s_img
 {
 	void	*i_wall;
 	void	*i_floor;
 	void	*i_player;
 	void	*i_exit;
 	void	*i_collect;
-}				t_pic;
+}				t_img;
 
 typedef struct s_map
 {
-	t_pic		pics;
+	t_img		pics;
 	void		*mlx;
 	void		*win;
 	int		width;
@@ -67,6 +67,7 @@ typedef struct s_map
 	int		moves;
 	int		exit;
 	int		dying;
+	int		temp;
 	char		**layout;
 	char		**lay_back;
 }				t_map;
@@ -126,7 +127,7 @@ char	*get_next_line(int fd);
 
 // get_next_line_utils
 char	*ft_cpy(char *dst);
-char	*ft_strchr(const char	*s, int c);
+char	*ft_strchr_g(const char	*s, int c);
 char	*ft_join(char *s1, char *s2);
 int	ft_strchr_gnl(const char *s, int c);
 
