@@ -1,31 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   start_position.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fnovais- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/03 15:06:17 by fnovais-          #+#    #+#             */
-/*   Updated: 2022/11/14 12:50:22 by fnovais-         ###   ########.fr       */
+/*   Created: 2023/06/09 23:38:24 by fnovais-          #+#    #+#             */
+/*   Updated: 2023/06/09 23:44:23 by fnovais-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-int	ft_strchr_gnl(const char *s, int c)
+void	start_position(t_map *game)
 {
-	int		index;
-	int		len;
+	int	i;
+	int	j;
 
-	index = 0;
-	len = 0;
-	if (c == '\0')
-		return (0);
-	while (s[index] != '\0')
+	i = 0;
+	j = 0;
+	while (game->layout[i])
 	{
-		if (s[index] == c)
-			len++;
-		index++;
+		while (game->layout[i][j])
+		{	
+			if (game->layout[i][j] == 'P')
+			{
+				game->player_x = j;
+				game->player_y = i;
+			}
+			j++;
+		}
+		j = 0;
+		i++;
 	}
-	return (len);
+	ft_printf("player: %d, %d\n", game->player_x, game->player_y);
 }

@@ -16,32 +16,35 @@ CFLAGS = -Wall -Wextra -Werror
 
 LIBFT = ./libft/libft.a
 
-#MLX = ./minilibx-linux
+MLX = ./mlx/libmlx.a
 
 RM = rm -f
 
 SO_LONG = so_long
 
-SRC = so_long.c map_validation/read_map.c \
-	gnl/get_next_line.c gnl/get_next_line_utils.c gnl/get_height.c gnl/get_width.c \
+SRC = so_long.c \
+	src/read_map.c src/start_position.c src/render_img.c \
+	src/access_img.c src/closure.c src/control_key.c \
+	src/free_ft.c src/validations.c \
+	gnl/get_next_line.c gnl/get_next_line_utils.c gnl/get_dimensions.c \
 	gnl/ft_strchr_gnl.c
 
 OBJ = $(SRC:.c=.o)
+CCMLX = -L ./mlx -lmlx -Ilmlx -lXext -lX11
 
 all: $(SO_LONG)
 
 $(LIBFT):
 	$(MAKE) -C ./libft
 
-#$(MLX):
-#	$(MAKE) -C ./minilibx-linux
+$(MLX):
+	$(MAKE) -C ./mlx
 
-$(SO_LONG): $(OBJ) $(LIBFT)
-	$(CC) $(CFLAGS) $(OBJ) $(LIBFT) -o so_long
+$(SO_LONG): $(OBJ) $(LIBFT) $(MLX)
+	$(CC) $(CFLAGS) $(OBJ) $(LIBFT) $(CCMLX) -o so_long
 
 clean:
 	$(MAKE) clean -C ./libft
-#	$(MAKE) clean -C ./minilibx-linux
 	$(RM) $(OBJ)
 
 fclean: clean

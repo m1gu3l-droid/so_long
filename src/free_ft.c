@@ -1,31 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   free_ft.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fnovais- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/03 15:06:17 by fnovais-          #+#    #+#             */
-/*   Updated: 2022/11/14 12:50:22 by fnovais-         ###   ########.fr       */
+/*   Created: 2023/06/12 02:22:52 by fnovais-          #+#    #+#             */
+/*   Updated: 2023/06/12 02:27:42 by fnovais-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-int	ft_strchr_gnl(const char *s, int c)
+void	free_map(t_map *game)
 {
-	int		index;
-	int		len;
+	(void)game;
+}
 
-	index = 0;
-	len = 0;
-	if (c == '\0')
-		return (0);
-	while (s[index] != '\0')
-	{
-		if (s[index] == c)
-			len++;
-		index++;
-	}
-	return (len);
+void	free_sprite(t_map *game)
+{
+	(void)game;
+}
+
+void	free_player(t_map *game)
+{
+	(void)game;
 }

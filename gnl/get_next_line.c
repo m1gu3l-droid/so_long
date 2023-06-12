@@ -77,26 +77,3 @@ char	*get_next_line(int fd)
 	buffer = next_line(buffer);
 	return (line);
 }
-/*
-int	main(void)
-{
-	int		fd;
-	char	*s2;
-
-	fd = open("map1.ber", O_RDONLY);
-	if (fd == -1)
-		printf("Error\n");
-	s2 = get_next_line(fd);
-	printf("%s\n", s2);
-	s2 = get_next_line(fd);
-	printf("%s\n", s2);
-	s2 = get_next_line(fd);
-	printf("%s\n", s2);
-	s2 = get_next_line(fd);
-	printf("%s\n", s2);
-	s2 = get_next_line(fd);
-	printf("%s\n", s2);
-	close(fd);
-	return (0);
-}
-*/

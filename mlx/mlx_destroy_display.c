@@ -1,31 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   mlx_destroy_display.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fnovais- <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mg <mg@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/03 15:06:17 by fnovais-          #+#    #+#             */
-/*   Updated: 2022/11/14 12:50:22 by fnovais-         ###   ########.fr       */
+/*   Created: 2020/10/03 18:56:35 by mg                #+#    #+#             */
+/*   Updated: 2020/10/04 01:55:35 by mg               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#include "mlx_int.h"
 
-int	ft_strchr_gnl(const char *s, int c)
+int	mlx_destroy_display(t_xvar *xvar)
 {
-	int		index;
-	int		len;
-
-	index = 0;
-	len = 0;
-	if (c == '\0')
-		return (0);
-	while (s[index] != '\0')
-	{
-		if (s[index] == c)
-			len++;
-		index++;
-	}
-	return (len);
+	XCloseDisplay(xvar->display);
 }
