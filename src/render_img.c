@@ -16,23 +16,23 @@ void	image_to_map(int x, int y, char c, t_map *game)
 {
 	if (c == '0')
 	{
-		mlx_put_image_to_window(game->mlx, game->win, game->pics.i_floor, x * 32, y * 32);
+		mlx_put_image_to_window(game->mlx, game->win, game->pics.i_floor, x * 64, y * 64);
 	}
 	if (c == '1')
 	{
-		mlx_put_image_to_window(game->mlx, game->win, game->pics.i_wall, x * 32, y * 32);
+		mlx_put_image_to_window(game->mlx, game->win, game->pics.i_wall, x * 64, y * 64);
 	}
 	if (c == 'P')
 	{
-		mlx_put_image_to_window(game->mlx, game->win, game->pics.i_player, x * 32, y * 32);
+		mlx_put_image_to_window(game->mlx, game->win, game->pics.i_player, x * 64, y * 64);
 	}
 	if (c == 'C')
 	{
-		mlx_put_image_to_window(game->mlx, game->win, game->pics.i_collect, x * 32, y * 32);
+		mlx_put_image_to_window(game->mlx, game->win, game->pics.i_collect, x * 64, y * 64);
 	}
 	if (c == 'E')
 	{
-		mlx_put_image_to_window(game->mlx, game->win, game->pics.i_exit, x * 32, y * 32);
+		mlx_put_image_to_window(game->mlx, game->win, game->pics.i_exit, x * 64, y * 64);
 	}
 }
 

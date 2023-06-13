@@ -16,7 +16,7 @@ void	access_img(t_map *game)
 {
 	int	len;
 
-	len = 32;
+	len = 64;
 	game->pics.i_wall = mlx_xpm_file_to_image(game->mlx, WALL, &len, &len);
 	game->pics.i_floor = mlx_xpm_file_to_image(game->mlx, FLOOR, &len, &len);
 	game->pics.i_player = mlx_xpm_file_to_image(game->mlx, PLAYER, &len, &len);

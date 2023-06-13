@@ -44,7 +44,7 @@ void	start_map(t_map *game)
 void	start_game(t_map *game)
 {
 	game->mlx = mlx_init();
-	game->win = mlx_new_window(game->mlx, game->height * 32, game->width * 32, "so_long");
+	game->win = mlx_new_window(game->mlx, game->height * 64, game->width * 64, "so_long");
 	mlx_hook(game->win, 02, 1L << 0, control_key, game);
 	mlx_hook(game->win, 17, 1L << 17, closure, game);
 	access_img(game);
