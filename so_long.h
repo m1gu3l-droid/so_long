@@ -99,7 +99,7 @@ void	quit_game(char *str, t_map *game);
 int		closure(t_map *game);
 
 // free_ft
-void	free_map(t_map *game);
+void	free_map(char **game);
 void	free_sprite(t_map *game);
 void	free_player(t_map *game);
 
