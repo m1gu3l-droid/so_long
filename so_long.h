@@ -6,7 +6,7 @@
 /*   By: fnovais- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 03:45:23 by fnovais-          #+#    #+#             */
-/*   Updated: 2023/06/12 23:14:20 by fnovais-         ###   ########.fr       */
+/*   Updated: 2023/06/14 00:51:59 by fnovais-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@
 # define FLOOR "./images/floor.xpm"
 # define PLAYER "./images/player.xpm"
 # define EXIT "./images/exit.xpm"
-# define COLLECT "./images/collect.xpm"
+# define COL "./images/collect.xpm"
+# define MFD "./images/me_food.xpm"
 
 # define W 119
 # define A 97
@@ -43,13 +44,14 @@
 # define D 100
 # define ESC 65307
 
-typedef	struct	s_img
+typedef struct s_img
 {
 	void	*i_wall;
 	void	*i_floor;
 	void	*i_player;
 	void	*i_exit;
 	void	*i_collect;
+	void	*i_me_food;
 }				t_img;
 
 typedef struct s_map
@@ -57,17 +59,18 @@ typedef struct s_map
 	t_img		pics;
 	void		*mlx;
 	void		*win;
-	int		width;
-	int		height;
-	int		collect;
-	int		score;
-	int		player;
-	int		player_x;
-	int		player_y;
-	int		moves;
-	int		exit;
-	int		dying;
-	int		temp;
+	int			width;
+	int			height;
+	int			collect;
+	int			val_col;
+	int			score;
+	int			player;
+	int			player_x;
+	int			player_y;
+	int			moves;
+	int			exit;
+	int			dying;
+	int			temp;
 	char		**layout;
 	char		**lay_back;
 }				t_map;
@@ -93,7 +96,7 @@ void	access_img(t_map *game);
 
 // closure
 void	quit_game(char *str, t_map *game);
-int	closure(t_map *game);
+int		closure(t_map *game);
 
 // free_ft
 void	free_map(t_map *game);
@@ -101,20 +104,22 @@ void	free_sprite(t_map *game);
 void	free_player(t_map *game);
 
 //control key
-int	val_move(t_map *game, int y, int x, int key);
+int		val_move(t_map *game, int y, int x, int key);
 void	input_move(t_map *game, int y, int x, int key);
-int	control_key(int key, t_map *game);
+int		control_key(int key, t_map *game);
+
+// val_path
+bool	val_path(t_map *game, int x, int y);
+bool		val_path_param(t_map *game);
 
 // validations
-int	val_rectangular(t_map *game);
-int	val_vault(t_map *game);
-int	val_characters(t_map *game);
-bool	val_path(t_map *game, char c, int x, int y);
-int	val_path_param(t_map *game);
+int		val_rectangular(t_map *game);
+int		val_vault(t_map *game);
+int		val_characters(t_map *game);
 void	validations(t_map *game);
 
 // get_dimensions
-int	ft_strlen_width(char *str);
+int		ft_strlen_width(char *str);
 void	get_dimensions(t_map *game, int fd);
 
 // ft_strchr_gnl
@@ -129,6 +134,6 @@ char	*get_next_line(int fd);
 char	*ft_cpy(char *dst);
 char	*ft_strchr_g(const char	*s, int c);
 char	*ft_join(char *s1, char *s2);
-int	ft_strchr_gnl(const char *s, int c);
+int		ft_strchr_gnl(const char *s, int c);
 
 #endif

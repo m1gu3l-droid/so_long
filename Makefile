@@ -25,7 +25,7 @@ SO_LONG = so_long
 SRC = so_long.c \
 	src/read_map.c src/start_position.c src/render_img.c \
 	src/access_img.c src/closure.c src/control_key.c \
-	src/free_ft.c src/validations.c \
+	src/free_ft.c src/validations.c src/val_path.c\
 	gnl/get_next_line.c gnl/get_next_line_utils.c gnl/get_dimensions.c \
 	gnl/ft_strchr_gnl.c
 

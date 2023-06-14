@@ -6,7 +6,7 @@
 /*   By: fnovais- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 23:38:24 by fnovais-          #+#    #+#             */
-/*   Updated: 2023/06/09 23:44:23 by fnovais-         ###   ########.fr       */
+/*   Updated: 2023/06/14 01:15:25 by fnovais-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,4 @@ void	start_position(t_map *game)
 		j = 0;
 		i++;
 	}
-	//ft_printf("player: %d, %d\n", game->player_x, game->player_y);
 }

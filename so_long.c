@@ -6,7 +6,7 @@
 /*   By: fnovais- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 03:54:11 by fnovais-          #+#    #+#             */
-/*   Updated: 2023/06/12 03:29:53 by fnovais-         ###   ########.fr       */
+/*   Updated: 2023/06/14 00:49:30 by fnovais-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,17 +34,19 @@ void	start_map(t_map *game)
 	game->player_x = 0;
 	game->player_y = 0;
 	game->collect = 0;
+	game->val_col = 0;
 	game->score = 0;
 	game->dying = 0;
 	game->temp = 0;
-	game->moves = 0;
+	game->moves = 1;
 	game->exit = 0;
 }
 
 void	start_game(t_map *game)
 {
 	game->mlx = mlx_init();
-	game->win = mlx_new_window(game->mlx, game->height * 64, game->width * 64, "so_long");
+	game->win = mlx_new_window(game->mlx, game->width * 64,
+			game->height * 64, "so_long");
 	mlx_hook(game->win, 02, 1L << 0, control_key, game);
 	mlx_hook(game->win, 17, 1L << 17, closure, game);
 	access_img(game);
@@ -54,12 +56,12 @@ void	start_game(t_map *game)
 
 int	main(int ac, char **av)
 {
+	int		fd_g;
+	int		fd_wh;
+	t_map	game;
+
 	if (ac == 2)
-	{
-		int	fd_g;
-		int	fd_wh;
-		t_map	game;
-		
+	{	
 		fd_wh = open(av[1], O_RDONLY);
 		fd_g = open(av[1], O_RDONLY);
 		if (fd_wh == -1 || fd_g == -1)
@@ -70,8 +72,8 @@ int	main(int ac, char **av)
 		close(fd_wh);
 		read_map(&game, fd_g);
 		close(fd_g);
-		validations(&game);
 		start_position(&game);
+		validations(&game);
 		start_game(&game);
 	}
 	return (0);

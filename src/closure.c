@@ -14,7 +14,7 @@
 
 void	quit_game(char *str, t_map *game)
 {
-	ft_printf("Error\n%s\n", str);
+	ft_printf("Error\n%s", str);
 	if (game->layout[0])
 		free_map(game);
 	exit(0);
@@ -29,7 +29,7 @@ int	closure(t_map *game)
 	free_sprite(game);
 	free_player(game);
 	if (game->dying == -1)
-		ft_printf("game over!\nmoves: %d\n", game->moves);
+		ft_printf("-.- game over! -.-\n", game->moves);
 	mlx_clear_window(game->mlx, game->win);
 	mlx_destroy_window(game->mlx, game->win);
 	mlx_destroy_display(game->mlx);
