@@ -14,7 +14,7 @@
 
 #include "../so_long.h"
 
-void	free_layout(t_map *game)
+void	free_layout(t_game *game)
 {
 	int	i;
 
@@ -27,7 +27,7 @@ void	free_layout(t_map *game)
 	free(game->layout);
 }
 
-void	free_layback(t_map *game)
+void	free_layback(t_game *game)
 {
 	int	i;
 
@@ -40,7 +40,7 @@ void	free_layback(t_map *game)
 	free(game->lay_back);
 }
 
-void	free_sprite(t_map *game)
+void	free_sprite(t_game *game)
 {
 	mlx_destroy_image(game->mlx, game->pics.i_exit);
 	if (game->pics.i_collect)
@@ -58,7 +58,7 @@ void	free_sprite(t_map *game)
 	free(game->mlx);
 }
 
-void	quit_game(char *str, t_map *game)
+void	quit_game(char *str, t_game *game)
 {
 	ft_printf("Error\n%s", str);
 	if (game->layout[0])
@@ -68,11 +68,10 @@ void	quit_game(char *str, t_map *game)
 	exit(0);
 }
 
-int	closure(t_map *game)
+int	closure(t_game *game)
 {
 	mlx_destroy_window(game->mlx, game->win);
 	free_sprite(game);
-//	free_layout(game);
 	if (game->dying == -1)
 		ft_printf("-.- game over! -.-\n", game->moves);
 	exit(0);

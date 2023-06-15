@@ -12,7 +12,7 @@
 
 #include "../so_long.h"
 
-int	val_move(t_map *game, int y, int x, int key)
+int	val_move(t_game *game, int y, int x, int key)
 {
 	if (key != W && key != S && key != A && key != D)
 		return (-1);
@@ -31,7 +31,7 @@ int	val_move(t_map *game, int y, int x, int key)
 	return (0);
 }
 
-void	input_move(t_map *game, int y, int x, int key)
+void	input_move(t_game *game, int y, int x, int key)
 {
 	int	outcome;
 	int	cy;
@@ -56,11 +56,11 @@ void	input_move(t_map *game, int y, int x, int key)
 			game->layout[y][x] = 'P';
 		if (game->layout[y][x] == 'E')
 			game->layout[y][x] = 'E';
-		render_img(game);
+		render_sprite(game);
 	}
 }
 
-int	control_key(int key, t_map *game)
+int	control_key(int key, t_game *game)
 {
 	int	y;
 	int	x;

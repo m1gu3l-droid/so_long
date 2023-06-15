@@ -13,7 +13,7 @@
 #include "../so_long.h"
 
 //valid path
-bool	val_path(t_map *game, int x, int y)
+bool	val_path(t_game *game, int x, int y)
 {
 	static bool	f_exit = false;
 
@@ -37,14 +37,12 @@ bool	val_path(t_map *game, int x, int y)
 	return (game->val_col == game->collect && f_exit);
 }
 
-bool	val_path_param(t_map *game)
+bool	val_path_param(t_game *game)
 {
-//	char	c;
 	int		x;
 	int		y;
 	bool	outcome;
 
-//	c = game->lay_back[game->player_y][game->player_x];
 	x = game->player_x;
 	y = game->player_y;
 	outcome = val_path(game, x, y);

@@ -12,7 +12,7 @@
 
 #include "../so_long.h"
 
-int	val_rectangular(t_map *game)
+int	val_rectangular(t_game *game)
 {
 	int	i;
 	int	j;
@@ -29,7 +29,7 @@ int	val_rectangular(t_map *game)
 	return (0);
 }
 
-int	val_vault(t_map *game)
+int	val_vault(t_game *game)
 {
 	int	i;
 	int	j;
@@ -58,7 +58,7 @@ int	val_vault(t_map *game)
 	return (0);
 }
 
-int	val_characters(t_map *game)
+int	val_characters(t_game *game)
 {
 	if (game->player != 1)
 		return (1);
@@ -69,7 +69,7 @@ int	val_characters(t_map *game)
 	return (0);
 }
 
-void	validations(t_map *game)
+void	validations(t_game *game)
 {
 	if (val_rectangular(game) == 1)
 		quit_game("your map should be rectangular\n", game);

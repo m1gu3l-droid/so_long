@@ -12,7 +12,7 @@
 
 #include "../so_long.h"
 
-void	access_img(t_map *game)
+void	access_sprite(t_game *game)
 {
 	int	len;
 

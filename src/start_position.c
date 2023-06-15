@@ -12,7 +12,7 @@
 
 #include "../so_long.h"
 
-void	start_position(t_map *game)
+void	start_position(t_game *game)
 {
 	int	i;
 	int	j;

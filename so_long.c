@@ -12,13 +12,11 @@
 
 #include "so_long.h"
 
-void	check_args(t_map *game, int ac, char **av)
+void	check_args(char **av)
 {
 	int	i;
 
 	i = ft_strlen(av[1]);
-	if (ac != 2)
-		quit_game("Try: ./so_long [name_of_map_file].ber\n", game);
 	if (!(ft_strnstr(av[1] + (i - 4), ".ber", 4)))
 	{
 		ft_printf("Error\nfile must be .ber\n");
@@ -26,7 +24,7 @@ void	check_args(t_map *game, int ac, char **av)
 	}
 }
 
-void	start_map(t_map *game)
+void	start_map(t_game *game)
 {
 	game->width = 0;
 	game->height = 0;
@@ -43,15 +41,15 @@ void	start_map(t_map *game)
 	game->exit = 0;
 }
 
-void	start_game(t_map *game)
+void	start_game(t_game *game)
 {
 	game->mlx = mlx_init();
 	game->win = mlx_new_window(game->mlx, game->width * 64,
 			game->height * 64, "so_long");
 	mlx_hook(game->win, 02, 1L << 0, control_key, game);
 	mlx_hook(game->win, 17, 1L << 17, closure, game);
-	access_img(game);
-	render_img(game);
+	access_sprite(game);
+	render_sprite(game);
 	mlx_loop(game->mlx);
 }
 
@@ -59,15 +57,17 @@ int	main(int ac, char **av)
 {
 	int		fd_g;
 	int		fd_wh;
-	t_map	game;
+	t_game	game;
 
+	if (ac != 2)
+		ft_printf("Error\nTry: ./so_long [name_of_map_file].ber\n");
 	if (ac == 2)
-	{	
+	{
+		check_args(av);
 		fd_wh = open(av[1], O_RDONLY);
 		fd_g = open(av[1], O_RDONLY);
 		if (fd_wh == -1 || fd_g == -1)
 			return (1);
-		check_args(&game, ac, av);
 		start_map(&game);
 		get_dimensions(&game, fd_wh);
 		close(fd_wh);

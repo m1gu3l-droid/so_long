@@ -12,7 +12,7 @@
 
 #include "../so_long.h"
 
-void	image_to_map(int x, int y, char c, t_map *game)
+void	image_to_map(int x, int y, char c, t_game *game)
 {
 	if (c == '0')
 		mlx_put_image_to_window(game->mlx, game->win,
@@ -34,7 +34,7 @@ void	image_to_map(int x, int y, char c, t_map *game)
 			game->pics.i_me_food, x * 64, y * 64);
 }
 
-void	render_img(t_map *game)
+void	render_sprite(t_game *game)
 {
 	int	y;
 	int	x;

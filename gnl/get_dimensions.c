@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_height.c                                       :+:      :+:    :+:   */
+/*   get_dimensions.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fnovais- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 16:25:53 by fnovais-          #+#    #+#             */
-/*   Updated: 2023/06/09 21:19:48 by fnovais-         ###   ########.fr       */
+/*   Updated: 2023/06/15 05:10:52 by fnovais-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,18 @@
 int	ft_strlen_width(char *str)
 {
 	int	i;
-	
+
 	i = 0;
 	while (str[i] != '\0' && str[i] != '\n')
 		i++;
 	return (i);
 }
 
-void	get_dimensions(t_map *game, int fd)
+void	get_dimensions(t_game *game, int fd)
 {
 	char	*line;
-	int	h;
-	
+	int		h;
+
 	h = 0;
 	line = get_next_line(fd);
 	if (line != NULL)
@@ -49,4 +49,3 @@ void	get_dimensions(t_map *game, int fd)
 	}
 	free(line);
 }
-

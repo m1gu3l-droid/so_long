@@ -22,14 +22,14 @@ size_t	ft_strlen_rm(const char *s)
 	return (c);
 }
 
-void	read_backup(t_map *game)
+void	read_backup(t_game *game)
 {
 	int	i;
 	int	j;
 
 	i = 0;
 	j = game->height + 1;
-	game->lay_back = malloc(sizeof(char *) * j);	
+	game->lay_back = malloc(sizeof(char *) * j);
 	if (!game->lay_back)
 		quit_game("Error\n", game);
 	while (i < j)
@@ -39,7 +39,7 @@ void	read_backup(t_map *game)
 	}
 }
 
-void	read_map(t_map *game, int fd)
+void	read_map(t_game *game, int fd)
 {
 	char	*line;
 	int		i;

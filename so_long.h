@@ -6,7 +6,7 @@
 /*   By: fnovais- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 03:45:23 by fnovais-          #+#    #+#             */
-/*   Updated: 2023/06/14 00:51:59 by fnovais-         ###   ########.fr       */
+/*   Updated: 2023/06/15 05:14:27 by fnovais-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ typedef struct s_img
 	void	*i_me_food;
 }				t_img;
 
-typedef struct s_map
+typedef struct s_game
 {
 	t_img		pics;
 	void		*mlx;
@@ -74,52 +74,52 @@ typedef struct s_map
 	int			path;
 	char		**layout;
 	char		**lay_back;
-}				t_map;
+}				t_game;
 
 //so_long
-void	check_args(t_map *game, int ac, char **av);
-void	start_map(t_map *game);
-void	start_game(t_map *game);
+void	check_args(char **av);
+void	start_map(t_game *game);
+void	start_game(t_game *game);
 
 // read_map
 size_t	ft_strlen_rm(const char *s);
-void	read_map(t_map *game, int fd);
+void	read_map(t_game *game, int fd);
 
 // start_position
-void	start_position(t_map *game);
+void	start_position(t_game *game);
 
 // render_img
-void	image_to_map(int x, int y, char c, t_map *game);
-void	render_img(t_map *game);
+void	image_to_map(int x, int y, char c, t_game *game);
+void	render_sprite(t_game *game);
 
 // access_img
-void	access_img(t_map *game);
+void	access_sprite(t_game *game);
 
 // closure
-void	free_layout(t_map *game);
-void	free_layback(t_map *game);
-void	free_sprite(t_map *game);
-void	quit_game(char *str, t_map *game);
-int		closure(t_map *game);
+void	free_layout(t_game *game);
+void	free_layback(t_game *game);
+void	free_sprite(t_game *game);
+void	quit_game(char *str, t_game *game);
+int		closure(t_game *game);
 
 //control key
-int		val_move(t_map *game, int y, int x, int key);
-void	input_move(t_map *game, int y, int x, int key);
-int		control_key(int key, t_map *game);
+int		val_move(t_game *game, int y, int x, int key);
+void	input_move(t_game *game, int y, int x, int key);
+int		control_key(int key, t_game *game);
 
 // val_path
-bool	val_path(t_map *game, int x, int y);
-bool		val_path_param(t_map *game);
+bool	val_path(t_game *game, int x, int y);
+bool	val_path_param(t_game *game);
 
 // validations
-int		val_rectangular(t_map *game);
-int		val_vault(t_map *game);
-int		val_characters(t_map *game);
-void	validations(t_map *game);
+int		val_rectangular(t_game *game);
+int		val_vault(t_game *game);
+int		val_characters(t_game *game);
+void	validations(t_game *game);
 
 // get_dimensions
 int		ft_strlen_width(char *str);
-void	get_dimensions(t_map *game, int fd);
+void	get_dimensions(t_game *game, int fd);
 
 // ft_strchr_gnl
 size_t	ft_strlen_gnl(const char *s);
