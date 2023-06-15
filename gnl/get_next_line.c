@@ -73,7 +73,7 @@ char	*get_next_line(int fd)
 	buffer = read_line(fd, buffer);
 	if (!buffer)
 		return (NULL);
-	line = ft_cpy((char *)buffer);
+	line = ft_cpy(buffer);
 	buffer = next_line(buffer);
 	return (line);
 }

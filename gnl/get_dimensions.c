@@ -27,11 +27,12 @@ void	get_dimensions(t_map *game, int fd)
 	char	*line;
 	int	h;
 	
-	h = 1;
-	if ((line = get_next_line(fd)) != NULL)
+	h = 0;
+	line = get_next_line(fd);
+	if (line != NULL)
 	{
 		game->width = ft_strlen_width((char *)line);
-		while ((line = get_next_line(fd)) != NULL)
+		while (line != NULL)
 		{
 			if (ft_strchr_gnl(line, 'P') != 0)
 				game->player += ft_strchr_gnl(line, 'P');
@@ -40,11 +41,12 @@ void	get_dimensions(t_map *game, int fd)
 			if (ft_strchr_gnl(line, 'C') != 0)
 				game->collect += ft_strchr_gnl(line, 'C');
 			h++;
+			free(line);
+			line = get_next_line(fd);
 		}
-	game->height = h;
-	game->score = game->collect;
-	//printf("h: %d\n", game->height);
-	//printf("w: %d\n", game->width);
+		game->height = h;
+		game->score = game->collect;
 	}
+	free(line);
 }
 

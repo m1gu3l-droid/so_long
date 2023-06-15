@@ -28,17 +28,13 @@ void	read_backup(t_map *game)
 	int	j;
 
 	i = 0;
-	j = 0;
-	game->lay_back = malloc(sizeof(char *) * game->height + 1);	
-	while (i < game->height)
+	j = game->height + 1;
+	game->lay_back = malloc(sizeof(char *) * j);	
+	if (!game->lay_back)
+		quit_game("Error\n", game);
+	while (i < j)
 	{
-		game->lay_back[i] = malloc(sizeof(char) * ft_strlen_rm(game->layout[i]) + 1);
-		while (j < game->width)
-		{	
-			game->lay_back[i][j] = game->layout[i][j];
-			j++;
-		}
-		j = 0;
+		game->lay_back[i] = ft_strtrim(game->layout[i], "\0");
 		i++;
 	}
 }
@@ -47,13 +43,17 @@ void	read_map(t_map *game, int fd)
 {
 	char	*line;
 	int		i;
+	int		j;
 
 	i = 0;
-	game->layout = malloc(sizeof(char *) * game->height + 1);
-	while ((line = get_next_line(fd)) != NULL)
+	j = game->height + 1;
+	game->layout = (char **)malloc(sizeof(char *) * j);
+	if (!game->layout)
+		quit_game("Error\n", game);
+	while (i < j)
 	{
-		game->layout[i] = malloc(sizeof(char) * ft_strlen_rm(line) + 1);
-		game->layout[i] = line;
+		line = get_next_line(fd);
+		game->layout[i] = ft_strtrim(line, "\n");
 		free(line);
 		i++;
 	}

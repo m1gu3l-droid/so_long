@@ -48,6 +48,7 @@ bool	val_path_param(t_map *game)
 	x = game->player_x;
 	y = game->player_y;
 	outcome = val_path(game, x, y);
-	free(game->lay_back);
+	free_layback(game);
+	game->path = 1;
 	return (outcome);
 }

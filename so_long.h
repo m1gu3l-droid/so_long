@@ -71,6 +71,7 @@ typedef struct s_map
 	int			exit;
 	int			dying;
 	int			temp;
+	int			path;
 	char		**layout;
 	char		**lay_back;
 }				t_map;
@@ -95,13 +96,11 @@ void	render_img(t_map *game);
 void	access_img(t_map *game);
 
 // closure
+void	free_layout(t_map *game);
+void	free_layback(t_map *game);
+void	free_sprite(t_map *game);
 void	quit_game(char *str, t_map *game);
 int		closure(t_map *game);
-
-// free_ft
-void	free_map(char **game);
-void	free_sprite(t_map *game);
-void	free_player(t_map *game);
 
 //control key
 int		val_move(t_map *game, int y, int x, int key);

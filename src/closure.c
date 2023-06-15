@@ -12,28 +12,68 @@
 
 #include "../so_long.h"
 
+#include "../so_long.h"
+
+void	free_layout(t_map *game)
+{
+	int	i;
+
+	i = 0;
+	while (game->layout[i])
+	{
+		free(game->layout[i]);
+		i++;
+	}
+	free(game->layout);
+}
+
+void	free_layback(t_map *game)
+{
+	int	i;
+
+	i = 0;
+	while (game->lay_back[i])
+	{
+		free(game->lay_back[i]);
+		i++;
+	}
+	free(game->lay_back);
+}
+
+void	free_sprite(t_map *game)
+{
+	mlx_destroy_image(game->mlx, game->pics.i_exit);
+	if (game->pics.i_collect)
+		mlx_destroy_image(game->mlx, game->pics.i_collect);
+	if (game->pics.i_player)
+		mlx_destroy_image(game->mlx, game->pics.i_player);
+	if (game->pics.i_wall)
+		mlx_destroy_image(game->mlx, game->pics.i_wall);
+	if (game->pics.i_floor)
+		mlx_destroy_image(game->mlx, game->pics.i_floor);
+	if (game->pics.i_me_food)
+		mlx_destroy_image(game->mlx, game->pics.i_me_food);
+	mlx_destroy_display(game->mlx);
+	free_layout(game);
+	free(game->mlx);
+}
+
 void	quit_game(char *str, t_map *game)
 {
 	ft_printf("Error\n%s", str);
 	if (game->layout[0])
-		free_map(game->layout);
+		free_layout(game);
+	if (game->path == 0)
+		free_layback(game);
 	exit(0);
 }
 
 int	closure(t_map *game)
 {
-	if (game->layout)
-		free_map(game->layout);
-	if (game->lay_back)
-		free_map(game->lay_back);
-//	free_sprite(game);
-//	free_player(game);
+	mlx_destroy_window(game->mlx, game->win);
+	free_sprite(game);
+//	free_layout(game);
 	if (game->dying == -1)
 		ft_printf("-.- game over! -.-\n", game->moves);
-	mlx_clear_window(game->mlx, game->win);
-	mlx_destroy_window(game->mlx, game->win);
-	mlx_destroy_display(game->mlx);
-	free(game->mlx);
 	exit(0);
-	return (0);
 }

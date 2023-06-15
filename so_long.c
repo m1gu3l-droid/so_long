@@ -38,6 +38,7 @@ void	start_map(t_map *game)
 	game->score = 0;
 	game->dying = 0;
 	game->temp = 0;
+	game->path = 0;
 	game->moves = 1;
 	game->exit = 0;
 }
