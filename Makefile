@@ -29,7 +29,13 @@ SRC = so_long.c \
 	gnl/get_next_line.c gnl/get_next_line_utils.c gnl/get_dimensions.c \
 	gnl/ft_strchr_gnl.c
 
+SRC_BONUS = so_long_bonus.c src_bonus/access_sprite_bonus.c \
+		src_bonus/control_key_bonus.c src_bonus/render_sprite_bonus.c
+
 OBJ = $(SRC:.c=.o)
+
+OBJ_BONUS = $(SRC_BONUS:.c=.o)
+
 CCMLX = -L ./mlx -lmlx -Ilmlx -lXext -lX11
 
 all: $(SO_LONG)
@@ -50,7 +56,11 @@ clean:
 fclean: clean
 	$(MAKE) fclean -C ./libft
 	$(RM) $(SO_LONG)
+	$(RM) so_long_bonus
 
 re: clean fclean all
+
+bonus: $(OBJ) $(OBJ_BONUS) $(LIBFT) $(MLX)
+	$(CC) $(CFLAGS) $(OBJ) $(OBJ_BONUS) $(LIBFT) $(CCMLX) -o so_long_bonus
 
 .SILENT:

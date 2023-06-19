@@ -37,6 +37,14 @@
 # define EXIT "./images/exit.xpm"
 # define COL "./images/collect.xpm"
 # define MFD "./images/me_food.xpm"
+# define BT "./images/bonus/b_left.xpm"
+# define FTL "./images/bonus/f_top_leftx.xpm"
+# define GTR "./images/bonus/g_top_right.xpm"
+# define HBR "./images/bonus/h_bottom_right.xpm"
+# define JBL "./images/bonus/j_bottom_left.xpm"
+# define MB "./images/bonus/m_bottom.xpm"
+# define NR "./images/bonus/n_right.xpm"
+# define VL "./images/bonus/v_top.xpm"
 
 # define UP 38
 # define DOWN 40
@@ -146,5 +154,13 @@ char	*ft_cpy(char *dst);
 char	*ft_strchr_g(const char	*s, int c);
 char	*ft_join(char *s1, char *s2);
 int		ft_strchr_gnl(const char *s, int c);
+
+// bonus
+void	access_sprite_bonus(t_game *game);
+int	val_move_bonus(t_game *game, int y, int x, int key);
+void	input_move_bonus(t_game *game, int y, int x, int key);
+int	control_key_bonus(int key, t_game *game);
+void	sprite_to_map_bonus(int x, int y, char c, t_game *game);
+void	render_sprite_bonus(t_game *game);
 
 #endif
