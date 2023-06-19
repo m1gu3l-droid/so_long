@@ -14,7 +14,8 @@
 
 int	val_move(t_game *game, int y, int x, int key)
 {
-	if (key != W && key != S && key != A && key != D)
+	if (key != W && key != S && key != A && key != D && key != KUP
+		&& key != KDOWN && key != KLEFT && key != KRIGHT)
 		return (-1);
 	if (game->layout[y][x] == '1')
 		return (-1);
@@ -72,13 +73,13 @@ int	control_key(int key, t_game *game)
 		game->dying = -1;
 		closure(game);
 	}
-	if (key == W)
+	if (key == W || key == KUP)
 		y--;
-	if (key == S)
+	if (key == S || key == KDOWN)
 		y++;
-	if (key == A)
+	if (key == A || key == KLEFT)
 		x--;
-	if (key == D)
+	if (key == D || key == KRIGHT)
 		x++;
 	if (game->dying != -1)
 		input_move(game, y, x, key);

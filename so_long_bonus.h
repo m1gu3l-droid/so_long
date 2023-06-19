@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   so_long_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fnovais- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 03:45:23 by fnovais-          #+#    #+#             */
-/*   Updated: 2023/06/15 05:14:27 by fnovais-         ###   ########.fr       */
+/*   Updated: 2023/06/19 23:12:49 by fnovais-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#ifndef SO_LONG_BONUS_H
+# define SO_LONG_BONUS_H
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 42
@@ -157,9 +157,9 @@ int		ft_strchr_gnl(const char *s, int c);
 
 // bonus
 void	access_sprite_bonus(t_game *game);
-int	val_move_bonus(t_game *game, int y, int x, int key);
+int		val_move_bonus(t_game *game, int y, int x, int key);
 void	input_move_bonus(t_game *game, int y, int x, int key);
-int	control_key_bonus(int key, t_game *game);
+int		control_key_bonus(int key, t_game *game);
 void	sprite_to_map_bonus(int x, int y, char c, t_game *game);
 void	render_sprite_bonus(t_game *game);
 void	sprite_to_map_bonus_2(int x, int y, char c, t_game *game);
