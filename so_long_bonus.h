@@ -46,10 +46,10 @@
 # define NR "./images/bonus/n_right.xpm"
 # define VL "./images/bonus/v_top.xpm"
 
-# define UP 38
-# define DOWN 40
-# define LEFT 37
-# define RIGHT 39
+# define KUP 65362
+# define KDOWN 65364
+# define KLEFT 65361
+# define KRIGHT 65363
 # define W 119
 # define A 97
 # define S 115
