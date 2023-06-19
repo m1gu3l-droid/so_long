@@ -16,11 +16,14 @@ int	val_move_bonus(t_game *game, int y, int x, int key)
 {
 	if (key != W && key != S && key != A && key != D)
 		return (-1);
-	if (game->layout[y][x] == '1' || game->layout[y][x] == 'f' || game->layout[y][x] == 'g')
+	if (game->layout[y][x] == '1' || game->layout[y][x] == 'f'
+		|| game->layout[y][x] == 'g')
 		return (-1);
-	if (game->layout[y][x] == 'h' || game->layout[y][x] == 'j' || game->layout[y][x] == 'v')
+	if (game->layout[y][x] == 'h' || game->layout[y][x] == 'j'
+		|| game->layout[y][x] == 'v')
 		return (-1);
-	if (game->layout[y][x] == 'b' || game->layout[y][x] == 'n' || game->layout[y][x] == 'm')
+	if (game->layout[y][x] == 'b' || game->layout[y][x] == 'n'
+		|| game->layout[y][x] == 'm')
 		return (-1);
 	if (game->layout[y][x] == 'C')
 		game->score--;

@@ -12,26 +12,8 @@
 
 #include "../so_long_bonus.h"
 
-void	sprite_to_map_bonus(int x, int y, char c, t_game *game)
+void	sprite_to_map_bonus_2(int x, int y, char c, t_game *game)
 {
-	if (c == '0')
-		mlx_put_image_to_window(game->mlx, game->win,
-			game->pics.i_floor, x * 64, y * 64);
-	if (c == '1')
-		mlx_put_image_to_window(game->mlx, game->win,
-			game->pics.i_wall, x * 64, y * 64);
-	if (c == 'P')
-		mlx_put_image_to_window(game->mlx, game->win,
-			game->pics.i_player, x * 64, y * 64);
-	if (c == 'C')
-		mlx_put_image_to_window(game->mlx, game->win,
-			game->pics.i_collect, x * 64, y * 64);
-	if (c == 'E' && game->temp != 1)
-		mlx_put_image_to_window(game->mlx, game->win,
-			game->pics.i_exit, x * 64, y * 64);
-	if (c == 'E' && game->temp == 1)
-		mlx_put_image_to_window(game->mlx, game->win,
-			game->pics.i_me_food, x * 64, y * 64);
 	if (c == 'b')
 		mlx_put_image_to_window(game->mlx, game->win,
 			game->pics.i_t, x * 64, y * 64);
@@ -56,6 +38,30 @@ void	sprite_to_map_bonus(int x, int y, char c, t_game *game)
 	if (c == 'j')
 		mlx_put_image_to_window(game->mlx, game->win,
 			game->pics.i_bl, x * 64, y * 64);
+}
+
+void	sprite_to_map_bonus(int x, int y, char c, t_game *game)
+{
+	if (c == '0')
+		mlx_put_image_to_window(game->mlx, game->win,
+			game->pics.i_floor, x * 64, y * 64);
+	if (c == '1')
+		mlx_put_image_to_window(game->mlx, game->win,
+			game->pics.i_wall, x * 64, y * 64);
+	if (c == 'P')
+		mlx_put_image_to_window(game->mlx, game->win,
+			game->pics.i_player, x * 64, y * 64);
+	if (c == 'C')
+		mlx_put_image_to_window(game->mlx, game->win,
+			game->pics.i_collect, x * 64, y * 64);
+	if (c == 'E' && game->temp != 1)
+		mlx_put_image_to_window(game->mlx, game->win,
+			game->pics.i_exit, x * 64, y * 64);
+	if (c == 'E' && game->temp == 1)
+		mlx_put_image_to_window(game->mlx, game->win,
+			game->pics.i_me_food, x * 64, y * 64);
+	else
+		sprite_to_map_bonus_2(x, y, c, game);
 }
 
 void	render_sprite_bonus(t_game *game)

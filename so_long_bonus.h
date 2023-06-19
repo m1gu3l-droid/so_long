@@ -162,5 +162,6 @@ void	input_move_bonus(t_game *game, int y, int x, int key);
 int	control_key_bonus(int key, t_game *game);
 void	sprite_to_map_bonus(int x, int y, char c, t_game *game);
 void	render_sprite_bonus(t_game *game);
+void	sprite_to_map_bonus_2(int x, int y, char c, t_game *game);
 
 #endif
