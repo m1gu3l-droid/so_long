@@ -36,7 +36,7 @@ SRC_BONUS = src_bonus/so_long_bonus.c src_bonus/access_sprite_bonus.c \
 		src_bonus/read_map_bonus.c src_bonus/start_position_bonus.c \
 		src_bonus/closure_bonus.c src_bonus/validations_bonus.c \
 		src_bonus/val_path_bonus.c src_bonus/get_next_line_bonus.c \
-		src_bonus/get_next_line_utils_bonus.c \
+		src_bonus/get_next_line_utils_bonus.c src_bonus/animate.c \
 		src_bonus/get_dimensions_bonus.c src_bonus/ft_strchr_gnl_bonus.c
 
 OBJ = $(SRC:.c=.o)

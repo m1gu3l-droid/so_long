@@ -6,7 +6,7 @@
 /*   By: fnovais- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 03:45:23 by fnovais-          #+#    #+#             */
-/*   Updated: 2023/06/19 23:12:49 by fnovais-         ###   ########.fr       */
+/*   Updated: 2023/06/20 02:52:14 by fnovais-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@
 # include <stddef.h>
 # include <limits.h>
 # include <stdbool.h>
+# include <time.h>
 
 # define WALL "./images/wall.xpm"
 # define FLOOR "./images/floor.xpm"
@@ -37,6 +38,8 @@
 # define EXIT "./images/exit.xpm"
 # define COL "./images/collect.xpm"
 # define MFD "./images/me_food.xpm"
+# define I_R "./images/bonus/iva_red.xpm"
+# define I_W "./images/bonus/iva_white.xpm"
 # define BT "./images/bonus/b_left.xpm"
 # define FTL "./images/bonus/f_top_leftx.xpm"
 # define GTR "./images/bonus/g_top_right.xpm"
@@ -55,6 +58,18 @@
 # define S 115
 # define D 100
 # define ESC 65307
+/*
+typedef struct s_tile
+{
+	
+}				t_tile;
+*/
+typedef struct s_enemy
+{
+	int				enem_x;
+	int				enem_y;
+	int				enem_z;
+}				t_enemy;
 
 typedef struct s_img
 {
@@ -64,6 +79,8 @@ typedef struct s_img
 	void	*i_exit;
 	void	*i_collect;
 	void	*i_me_food;
+	void	*i_ivared;
+	void	*i_ivawhite;
 	void	*i_tr;
 	void	*i_tl;
 	void	*i_br;
@@ -77,6 +94,7 @@ typedef struct s_img
 typedef struct s_game
 {
 	t_img		pics;
+	t_enemy	enem;
 	void		*mlx;
 	void		*win;
 	int			width;
@@ -163,5 +181,7 @@ int		control_key_bonus(int key, t_game *game);
 void	sprite_to_map_bonus(int x, int y, char c, t_game *game);
 void	render_sprite_bonus(t_game *game);
 void	sprite_to_map_bonus_2(int x, int y, char c, t_game *game);
+void	ft_putenemy(int x, int y, t_game *game);
+int	animate(t_game *game);
 
 #endif

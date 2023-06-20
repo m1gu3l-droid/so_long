@@ -12,6 +12,20 @@
 
 #include "../so_long_bonus.h"
 
+void	end_game(t_game *game, int a)
+{
+	if (a == 2)
+	{
+		ft_printf("move: %d\n-.- yey, you bought food! -.- \n", game->moves);
+		closure(game);
+	}
+	if (a == 3)
+	{
+		ft_printf("-.- nothing is certain, but death and taxes -.- \n", game->moves);
+		closure(game);
+	}
+}
+
 int	val_move_bonus(t_game *game, int y, int x, int key)
 {
 	if (key != W && key != S && key != A && key != D && key != KUP
@@ -31,10 +45,9 @@ int	val_move_bonus(t_game *game, int y, int x, int key)
 	if (game->score > 0 && game->layout[y][x] == 'E')
 		game->temp = 1;
 	if (game->score == 0 && game->layout[y][x] == 'E')
-	{
-		ft_printf("move: %d\n-.- boring -.- \n", game->moves);
-		closure(game);
-	}
+		end_game(game, 2);
+	if (game->layout[y][x] == 'T')
+		end_game(game, 3);
 	ft_printf("move: %d\n", game->moves++);
 	return (0);
 }
@@ -64,6 +77,7 @@ void	input_move_bonus(t_game *game, int y, int x, int key)
 			game->layout[y][x] = 'P';
 		if (game->layout[y][x] == 'E')
 			game->layout[y][x] = 'E';
+		animate(game);
 		render_sprite_bonus(game);
 	}
 }

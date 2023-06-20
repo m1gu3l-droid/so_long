@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#include "../so_long_bonus.h"
 
 int	ft_strlen_width(char *str)
 {
@@ -47,5 +47,4 @@ void	get_dimensions(t_game *game, int fd)
 		game->height = h;
 		game->score = game->collect;
 	}
-	free(line);
 }

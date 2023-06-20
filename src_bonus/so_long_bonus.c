@@ -34,6 +34,9 @@ void	start_map(t_game *game)
 	game->collect = 0;
 	game->val_col = 0;
 	game->score = 0;
+	game->enem.enem_x = 0;
+	game->enem.enem_y = 0;
+	game->enem.enem_z = 1;
 	game->dying = 0;
 	game->temp = 0;
 	game->path = 0;
@@ -50,6 +53,7 @@ void	start_game(t_game *game)
 	mlx_hook(game->win, 17, 1L << 17, closure, game);
 	access_sprite_bonus(game);
 	render_sprite_bonus(game);
+//	mlx_loop_hook(game->mlx, animate, (void *)&game);
 	mlx_loop(game->mlx);
 }
 

@@ -23,6 +23,8 @@ void	access_sprite_bonus(t_game *game)
 	game->pics.i_exit = mlx_xpm_file_to_image(game->mlx, EXIT, &len, &len);
 	game->pics.i_collect = mlx_xpm_file_to_image(game->mlx, COL, &len, &len);
 	game->pics.i_me_food = mlx_xpm_file_to_image(game->mlx, MFD, &len, &len);
+	game->pics.i_ivared = mlx_xpm_file_to_image(game->mlx, I_R, &len, &len);
+	game->pics.i_ivawhite = mlx_xpm_file_to_image(game->mlx, I_W, &len, &len);
 	game->pics.i_tr = mlx_xpm_file_to_image(game->mlx, GTR, &len, &len);
 	game->pics.i_tl = mlx_xpm_file_to_image(game->mlx, FTL, &len, &len);
 	game->pics.i_br = mlx_xpm_file_to_image(game->mlx, HBR, &len, &len);

@@ -1,36 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   start_position.c                                   :+:      :+:    :+:   */
+/*   ft_animate.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fnovais- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/09 23:38:24 by fnovais-          #+#    #+#             */
-/*   Updated: 2023/06/14 01:15:25 by fnovais-         ###   ########.fr       */
+/*   Created: 2023/06/20 02:42:35 by fnovais-          #+#    #+#             */
+/*   Updated: 2023/06/20 02:52:04 by fnovais-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long_bonus.h"
 
-void	start_position(t_game *game)
+static void	animate(t_game *game)
 {
-	int	i;
-	int	j;
+	int	c;
 
-	i = 0;
-	j = 0;
-	while (i < game->height)
-	{
-		while (j < game->width)
-		{	
-			if (game->layout[i][j] == 'P')
-			{
-				game->player_x = j;
-				game->player_y = i;
-			}
-			j++;
-		}
-		j = 0;
-		i++;
-	}
+	c = game->player_x * game->player_y;
+	ft_putenemy(game->enem_x, game->enem_y, c, game);
 }
