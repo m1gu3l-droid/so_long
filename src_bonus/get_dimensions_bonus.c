@@ -35,11 +35,13 @@ void	get_dimensions(t_game *game, int fd)
 		while (line != NULL)
 		{
 			if (ft_strchr_gnl(line, 'P') != 0)
-				game->player += ft_strchr_gnl(line, 'P');
+				game->num_play += ft_strchr_gnl(line, 'P');
 			if (ft_strchr_gnl(line, 'E') != 0)
 				game->exit += ft_strchr_gnl(line, 'E');
 			if (ft_strchr_gnl(line, 'C') != 0)
 				game->collect += ft_strchr_gnl(line, 'C');
+			if (ft_strchr_gnl(line, 'T') != 0)
+				game->num_tax += ft_strchr_gnl(line, 'T');
 			h++;
 			free(line);
 			line = get_next_line(fd);

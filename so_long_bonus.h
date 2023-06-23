@@ -32,6 +32,12 @@
 # include <stdbool.h>
 # include <time.h>
 
+# define A_CALLS 250
+# define F_CALLS 40
+# define M_CALLS 5000
+# define T_FRAMES 8
+# define M_FRAMES 7
+
 # define WALL "./images/wall.xpm"
 # define FLOOR "./images/floor.xpm"
 # define PLAYER "./images/player.xpm"
@@ -40,14 +46,10 @@
 # define MFD "./images/me_food.xpm"
 # define I_R "./images/bonus/iva_red.xpm"
 # define I_W "./images/bonus/iva_white.xpm"
-# define BT "./images/bonus/b_left.xpm"
-# define FTL "./images/bonus/f_top_leftx.xpm"
-# define GTR "./images/bonus/g_top_right.xpm"
-# define HBR "./images/bonus/h_bottom_right.xpm"
-# define JBL "./images/bonus/j_bottom_left.xpm"
-# define MB "./images/bonus/m_bottom.xpm"
-# define NR "./images/bonus/n_right.xpm"
-# define VL "./images/bonus/v_top.xpm"
+# define M_U "./images/bonus/me_up.xpm"
+# define M_D "./images/bonus/me_down.xpm"
+# define M_L "./images/bonus/me_left.xpm"
+# define M_R "./images/bonus/me_right.xpm"
 
 # define KUP 65362
 # define KDOWN 65364
@@ -58,19 +60,30 @@
 # define S 115
 # define D 100
 # define ESC 65307
-/*
-typedef struct s_tile
-{
-	
-}				t_tile;
-*/
-typedef struct s_enemy
-{
-	int				enem_x;
-	int				enem_y;
-	int				enem_z;
-}				t_enemy;
 
+// position of the entity
+typedef struct s_place
+{
+	int	x;
+	int	y;
+}		t_place;
+
+// structure of the entity: either enemy or player
+typedef struct s_entity
+{
+	int	frame;
+	int	frame_rate;
+	int	current_rate;
+	int	move_counter;
+	int	move_rate;
+	int	animate_speed;
+	int	current_speed;
+	int	status;
+	t_place	pre;
+	t_place	pos;
+}				t_entity;
+
+// images for each element of the game
 typedef struct s_img
 {
 	void	*i_wall;
@@ -81,30 +94,28 @@ typedef struct s_img
 	void	*i_me_food;
 	void	*i_ivared;
 	void	*i_ivawhite;
-	void	*i_tr;
-	void	*i_tl;
-	void	*i_br;
-	void	*i_bl;
-	void	*i_l;
-	void	*i_r;
-	void	*i_t;
-	void	*i_b;
+	void	*p_left;
+	void	*p_right;
+	void	*p_up;
+	void	*p_down;
 }				t_img;
 
+// main structure of the game
 typedef struct s_game
 {
 	t_img		pics;
-	t_enemy	enem;
+	t_entity	me;
+	t_entity	*taxes;
 	void		*mlx;
 	void		*win;
 	int			width;
 	int			height;
 	int			collect;
+	int			num_play;
+	int			num_tax;
 	int			val_col;
 	int			score;
-	int			player;
-	int			player_x;
-	int			player_y;
+	int			direction;
 	int			moves;
 	int			exit;
 	int			dying;
@@ -176,12 +187,17 @@ int		ft_strchr_gnl(const char *s, int c);
 // bonus
 void	access_sprite_bonus(t_game *game);
 int		val_move_bonus(t_game *game, int y, int x, int key);
-void	input_move_bonus(t_game *game, int y, int x, int key);
+void	input_move_bonus(t_game *game, int x, int y, int key);
 int		control_key_bonus(int key, t_game *game);
 void	sprite_to_map_bonus(int x, int y, char c, t_game *game);
 void	render_sprite_bonus(t_game *game);
-void	sprite_to_map_bonus_2(int x, int y, char c, t_game *game);
-void	ft_putenemy(int x, int y, t_game *game);
+void	ft_putenemy(int x, int y, t_entity *img, t_game *game);
 int	animate(t_game *game);
+void	ft_putplayer(int x, int y, t_game *game);
+int	update(t_game *game);
+void	animation(t_game *game, t_entity *ent);
+void	render(t_game *game, t_img *img, int x, int y);
+void	start_entities(t_game *game);
+void	end_game(t_game *game, int a);
 
 #endif

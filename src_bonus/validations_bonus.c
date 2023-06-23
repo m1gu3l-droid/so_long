@@ -60,11 +60,11 @@ int	val_vault(t_game *game)
 
 int	val_characters(t_game *game)
 {
-	if (game->player != 1)
+	if (game->num_play != 1)
 		return (1);
 	if (game->exit != 1)
 		return (1);
-	if (game->collect < 1)
+	if (game->collect < 1 || game->num_tax < 1)
 		return (1);
 	return (0);
 }

@@ -43,8 +43,8 @@ bool	val_path_param(t_game *game)
 	int		y;
 	bool	outcome;
 
-	x = game->player_x;
-	y = game->player_y;
+	x = game->me.pre.x;
+	y = game->me.pre.y;
 	outcome = val_path(game, x, y);
 	free_layback(game);
 	game->path = 1;

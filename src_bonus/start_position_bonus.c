@@ -12,6 +12,52 @@
 
 #include "../so_long_bonus.h"
 
+void	start_map(t_game *game)
+{
+	game->width = 0;
+	game->height = 0;
+	game->direction = 0;
+	game->collect = 0;
+	game->num_tax = 0;
+	game->val_col = 0;
+	game->score = 0;
+	game->dying = 0;
+	game->temp = 0;
+	game->path = 0;
+	game->moves = 1;
+	game->exit = 0;
+}
+
+void	start_entities(t_game *game)
+{
+	int	i;
+	t_place	p;
+
+	i = 0;
+	p = (t_place){-1, -1};
+	game->me.frame_rate = F_CALLS;
+	game->me.animate_speed = A_CALLS;
+	game->taxes = ft_calloc(game->num_tax, sizeof(t_entity));
+	if (!game->taxes)
+		end_game(game, 4);
+	while (++p.y < game->height)
+	{
+		p.x = -1;
+		while (++p.x < game->width)
+		{
+			if (game->layout[p.y][p.x] != 'T')
+				continue;
+			game->taxes[i].frame = 0 % T_FRAMES;
+			game->taxes[i].frame_rate = F_CALLS;
+			game->taxes[i].move_rate = rand() % M_CALLS + M_CALLS;
+			game->taxes[i].animate_speed = A_CALLS;
+			game->taxes[i].status = 0;
+			game->taxes[i].pre = p;
+			game->taxes[i++].pos = p;
+		}
+	}
+}
+
 void	start_position(t_game *game)
 {
 	int	i;
@@ -25,8 +71,10 @@ void	start_position(t_game *game)
 		{	
 			if (game->layout[i][j] == 'P')
 			{
-				game->player_x = j;
-				game->player_y = i;
+				game->me.pre.x = j;
+				game->me.pre.y = i;
+				game->me.pos.x = j;
+				game->me.pos.y = i;
 			}
 			j++;
 		}

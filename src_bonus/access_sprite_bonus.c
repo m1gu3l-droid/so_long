@@ -25,12 +25,8 @@ void	access_sprite_bonus(t_game *game)
 	game->pics.i_me_food = mlx_xpm_file_to_image(game->mlx, MFD, &len, &len);
 	game->pics.i_ivared = mlx_xpm_file_to_image(game->mlx, I_R, &len, &len);
 	game->pics.i_ivawhite = mlx_xpm_file_to_image(game->mlx, I_W, &len, &len);
-	game->pics.i_tr = mlx_xpm_file_to_image(game->mlx, GTR, &len, &len);
-	game->pics.i_tl = mlx_xpm_file_to_image(game->mlx, FTL, &len, &len);
-	game->pics.i_br = mlx_xpm_file_to_image(game->mlx, HBR, &len, &len);
-	game->pics.i_bl = mlx_xpm_file_to_image(game->mlx, JBL, &len, &len);
-	game->pics.i_l = mlx_xpm_file_to_image(game->mlx, VL, &len, &len);
-	game->pics.i_r = mlx_xpm_file_to_image(game->mlx, NR, &len, &len);
-	game->pics.i_t = mlx_xpm_file_to_image(game->mlx, BT, &len, &len);
-	game->pics.i_b = mlx_xpm_file_to_image(game->mlx, MB, &len, &len);
+	game->pics.p_left = mlx_xpm_file_to_image(game->mlx, M_L, &len, &len);
+	game->pics.p_right = mlx_xpm_file_to_image(game->mlx, M_R, &len, &len);
+	game->pics.p_up = mlx_xpm_file_to_image(game->mlx, M_U, &len, &len);
+	game->pics.p_down = mlx_xpm_file_to_image(game->mlx, M_D, &len, &len);
 }

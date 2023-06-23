@@ -71,7 +71,7 @@ $(SO_LONG): $(OBJ) $(LIBFT) $(MLX)
 
 $(SO_LONG_BONUS): $(OBJ_BONUS) $(LIBFT) $(MLX)
 	@echo $(CURSIVE)$(YELLOW) "     - Compiling $(SO_LONG_BONUS)..." $(NONE)
-	$(CC) $(CFLAGS) $(OBJ_BONUS) $(LIBFT) $(CCMLX) -o $(SO_LONG_BONUS)
+	$(CC) $(CFLAGS) $(OBJ_BONUS) $(LIBFT) $(CCMLX) -o $(SO_LONG_BONUS) -pthread
 	@echo $(GREEN)"      - Compiled -"$(NONE)
 
 norm:

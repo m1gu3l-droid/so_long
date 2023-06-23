@@ -21,7 +21,12 @@ void	end_game(t_game *game, int a)
 	}
 	if (a == 3)
 	{
-		ft_printf("-.- nothing is certain, but death and taxes -.- \n", game->moves);
+		ft_printf("-.- nothing is certain, but death and taxes -.- \n");
+		closure(game);
+	}
+	if (a == 4)
+	{
+		ft_printf("-.- not able to charge taxes -.- \n");
 		closure(game);
 	}
 }
@@ -31,14 +36,7 @@ int	val_move_bonus(t_game *game, int y, int x, int key)
 	if (key != W && key != S && key != A && key != D && key != KUP
 		&& key != KDOWN && key != KLEFT && key != KRIGHT)
 		return (-1);
-	if (game->layout[y][x] == '1' || game->layout[y][x] == 'f'
-		|| game->layout[y][x] == 'g')
-		return (-1);
-	if (game->layout[y][x] == 'h' || game->layout[y][x] == 'j'
-		|| game->layout[y][x] == 'v')
-		return (-1);
-	if (game->layout[y][x] == 'b' || game->layout[y][x] == 'n'
-		|| game->layout[y][x] == 'm')
+	if (game->layout[y][x] == '1')
 		return (-1);
 	if (game->layout[y][x] == 'C')
 		game->score--;
@@ -48,37 +46,31 @@ int	val_move_bonus(t_game *game, int y, int x, int key)
 		end_game(game, 2);
 	if (game->layout[y][x] == 'T')
 		end_game(game, 3);
-	ft_printf("move: %d\n", game->moves++);
 	return (0);
 }
 
-void	input_move_bonus(t_game *game, int y, int x, int key)
+void	input_move_bonus(t_game *game, int x, int y, int key)
 {
 	int	outcome;
-	int	cy;
-	int	cx;
 
-	cy = game->player_y;
-	cx = game->player_x;
-	(void)key;
 	outcome = val_move_bonus(game, y, x, key);
 	if (outcome != -1)
 	{
-		game->player_y = y;
-		game->player_x = x;
+		game->direction = key;
+		game->me.pos.y = y;
+		game->me.pos.x = x;
 		if (game->temp != 1 || game->layout[y][x] == 'E')
-			game->layout[cy][cx] = '0';
+			game->layout[game->me.pre.y][game->me.pre.x] = '0';
 		if (game->temp == 1 && game->layout[y][x] != 'E')
 		{
-			game->layout[cy][cx] = 'E';
+			game->layout[game->me.pre.y][game->me.pre.x] = 'E';
 			game->temp = 0;
 		}
 		if (game->layout[y][x] != 'E')
 			game->layout[y][x] = 'P';
 		if (game->layout[y][x] == 'E')
 			game->layout[y][x] = 'E';
-		animate(game);
-		render_sprite_bonus(game);
+//		render_sprite_bonus(game);
 	}
 }
 
@@ -86,9 +78,13 @@ int	control_key_bonus(int key, t_game *game)
 {
 	int	y;
 	int	x;
-
-	y = game->player_y;
-	x = game->player_x;
+	
+	if (game->me.pos.y > 0 && game->me.pos.y < game->height)
+		game->me.pre.y = game->me.pos.y;
+	if (game->me.pos.x > 0 && game->me.pos.x < game->width)
+		game->me.pre.x = game->me.pos.x;
+	y = game->me.pre.y;
+	x = game->me.pre.x;
 	if (key == ESC)
 	{
 		game->dying = -1;
@@ -103,6 +99,6 @@ int	control_key_bonus(int key, t_game *game)
 	if (key == D || key == KRIGHT)
 		x++;
 	if (game->dying != -1)
-		input_move_bonus(game, y, x, key);
+		input_move_bonus(game, x, y, key);
 	return (0);
 }
