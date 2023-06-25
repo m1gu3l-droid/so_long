@@ -14,7 +14,7 @@
 #include <unistd.h>
 #include <time.h>
 #include <pthread.h>
-
+/*
 typedef struct {
 	t_game *game;
 	t_entity *ent;
@@ -22,6 +22,7 @@ typedef struct {
 
 void* animation_thread(void* arg)
 {
+	pthread_mutex_lock(&game_mutex);
 	ThreadData* data = (ThreadData*)arg;
 	t_game* game = data->game;
 	t_entity* ent = data->ent;
@@ -59,21 +60,26 @@ void* animation_thread(void* arg)
 			ent->pos.y * 64);
 		ent->frame = 2;
 	}
+	pthread_mutex_unlock(&game_mutex);
 	return NULL;
 }
 
-void* render_sprite_bonus_thread(void* arg)
+void* rendering_thread(void* arg)
 {
+	pthread_mutex_lock(&game_muitex);
 	t_game* game = (t_game*)arg;
-
 	render_sprite_bonus(game);
+	pthread_mutex_unlock(&game_mutex);
 
 	return NULL;
-}
-
+}*/
+/*
 int update(t_game* game)
 {
-	pthread_t thread;
+	pthread_t animation_thread_id;
+	pthread_create(&animation_thread_id, NULL, animation_thread, (void*)game);
+	render_sprite_bonus(game);
+	pthread_join(animation_thread_id, NULL);
 	ThreadData data;
 	int i = -1;
 
@@ -97,7 +103,7 @@ int update(t_game* game)
 
 	return 1;
 }
-
+*/
 /*
 #include "../so_long_bonus.h"
 #include <unistd.h>
