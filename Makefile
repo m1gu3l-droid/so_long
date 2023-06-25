@@ -6,7 +6,7 @@
 #    By: fnovais- <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/03 04:17:23 by fnovais-          #+#    #+#              #
-#    Updated: 2023/06/09 21:21:00 by fnovais-         ###   ########.fr        #
+#    Updated: 2023/06/25 23:07:55 by fnovais-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -71,7 +71,7 @@ $(SO_LONG): $(OBJ) $(LIBFT) $(MLX)
 
 $(SO_LONG_BONUS): $(OBJ_BONUS) $(LIBFT) $(MLX)
 	@echo $(CURSIVE)$(YELLOW) "     - Compiling $(SO_LONG_BONUS)..." $(NONE)
-	$(CC) $(CFLAGS) $(OBJ_BONUS) $(LIBFT) $(CCMLX) -o $(SO_LONG_BONUS) -pthread
+	$(CC) $(CFLAGS) -pthread $(OBJ_BONUS) $(LIBFT) $(CCMLX) -o $(SO_LONG_BONUS) -pthread
 	@echo $(GREEN)"      - Compiled -"$(NONE)
 
 norm:

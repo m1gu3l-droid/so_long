@@ -11,30 +11,26 @@
 /* ************************************************************************** */
 
 #include "../so_long_bonus.h"
-#include <unistd.h>
-#include <time.h>
-#include <pthread.h>
-/*
-typedef struct {
-	t_game *game;
-	t_entity *ent;
-} ThreadData;
 
-void* animation_thread(void* arg)
+int	delay_factor(int val, int min, int max, int out_min, int out_max)
 {
-	pthread_mutex_lock(&game_mutex);
-	ThreadData* data = (ThreadData*)arg;
-	t_game* game = data->game;
-	t_entity* ent = data->ent;
+	if (val < 100 )
+	 	return (15 + (val - min) * (out_max - out_min) / ((max - min) + out_max));
+	else
+		return ((val - min) * (out_max - out_min) / ((max - min) + out_max));
+}
 
-	if (ent->frame == 2)
+void animation(t_game *game, t_entity *ent)
+{
+	if (ent->frame == 1)
 	{
 		mlx_put_image_to_window(game->mlx, game->win,
 			game->pics.i_ivared, ent->pos.x * 64,
 			ent->pos.y * 64);
-		ent->frame = 3;
+		ent->frame = 0;
+		return;
 	}
-	if (ent->frame == 3)
+/*	if (ent->frame == 3)
 	{
 		mlx_put_image_to_window(game->mlx, game->win,
 			game->pics.i_ivared, ent->pos.x * 64,
@@ -43,125 +39,54 @@ void* animation_thread(void* arg)
 	}
 	if (ent->frame == 4)
 	{
-		ent->frame = 0;
-		return NULL;
-	}
-	if (ent->frame == 0)
-	{
-		mlx_put_image_to_window(game->mlx, game->win,
-			game->pics.i_ivawhite, ent->pos.x * 64,
-			ent->pos.y * 64);
-		ent->frame = 1;
-	}
-	if (ent->frame == 1)
-	{
-		mlx_put_image_to_window(game->mlx, game->win,
-			game->pics.i_ivawhite, ent->pos.x * 64,
-			ent->pos.y * 64);
-		ent->frame = 2;
-	}
-	pthread_mutex_unlock(&game_mutex);
-	return NULL;
-}
-
-void* rendering_thread(void* arg)
-{
-	pthread_mutex_lock(&game_muitex);
-	t_game* game = (t_game*)arg;
-	render_sprite_bonus(game);
-	pthread_mutex_unlock(&game_mutex);
-
-	return NULL;
-}*/
-/*
-int update(t_game* game)
-{
-	pthread_t animation_thread_id;
-	pthread_create(&animation_thread_id, NULL, animation_thread, (void*)game);
-	render_sprite_bonus(game);
-	pthread_join(animation_thread_id, NULL);
-	ThreadData data;
-	int i = -1;
-
-	while (++i < game->num_tax)
-	{
-		data.game = game;
-		data.ent = &game->taxes[i];
-
-		// Create thread for the animation function
-		if (pthread_create(&thread, NULL, animation_thread, (void*)&data) != 0)
-		{
-			fprintf(stderr, "Failed to create the animation thread\n");
-			return 0;
-		}
-		usleep(M_CALLS - game->num_tax);
-		// Call the render_sprite_bonus function concurrently
-		render_sprite_bonus_thread((void*)game);
-		// Wait for the animation thread to finish
-		pthread_join(thread, NULL);
-	}
-
-	return 1;
-}
-*/
-/*
-#include "../so_long_bonus.h"
-#include <unistd.h>
-#include <time.h>
-#include <pthread.h>
-
-void*	animation(t_game *game, t_entity *ent)
-{
-
-	ThreadData* data = (ThreadData*)arg;
-	t_game game = data->game;
-	if (ent->frame == 1)
-	{
-		mlx_put_image_to_window(game->mlx, game->win,
-			game->pics.i_ivared, ent->pos.x * 64, 
-				ent->pos.y * 64);
-		ent->frame = 2;
-	}
-	if (ent->frame == 2)
-	{
-		ent->frame = 0;
+		ent->frame = 5;
 		return;
 	}
-	if (ent->frame == 0)
-	{	
-		mlx_put_image_to_window(game->mlx, game->win,
-			game->pics.i_ivawhite, ent->pos.x * 64, 
-				ent->pos.y * 64);
-		ent->frame = 1;
-	}
-//	usleep(M_CALLS);
-}
-
-int	update(t_game *game)
-
-{
-	pthread_t	thread;
-	ThreadData data;
-	
-	data.game = t_game_initialization();
-	if (pthread_create(&thread, NULL, animation, (void*)&data) != 0)
+	if (ent->frame == 5)
 	{
-		fprintf(stderr, "Failed\n");
-		return (1);
+		mlx_put_image_to_window(game->mlx, game->win,
+			game->pics.i_ivawhite, ent->pos.x * 64,
+			ent->pos.y * 64);
+		ent->frame = 0;
 	}
-	render_sprite_bonus((void*)&data);
-	pthread_join(thread, NULL);
-	return (0);
+*/	if (ent->frame == 0)
+	{
+		mlx_put_image_to_window(game->mlx, game->win,
+			game->pics.i_ivawhite, ent->pos.x * 64,
+			ent->pos.y * 64);
+		ent->frame = 1;
+		return;
+	}
+/*	if (ent->frame == 1)
+	{
+		ent->frame = 2;
+		return;
+	}*/
 }
 
+int update(t_game* game)
 {
-	int	i = -1;
+	int	i;
+	int	delay;
+	int	min;
+	int	max;
+	int	min_del;
+	int	max_del;
+	int	factor;
+	
+	i = -1;
+	min = 1;
+	max = 500;
+	min_del = 4000;
+	max_del = 5000;
+	factor = 0;
 	while (++i < game->num_tax)
 	{
 		animation(game, &game->taxes[i]);
-		usleep(M_CALLS);
 	}
+	factor = delay_factor(game->num_tax, min, max, min_del, max_del);
+	delay = M_CALLS * factor;
 	render_sprite_bonus(game);
-	return (1);
+	usleep(delay);
+	return 1;
 }
-*/
