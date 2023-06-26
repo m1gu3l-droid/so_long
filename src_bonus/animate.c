@@ -15,9 +15,9 @@
 int	delay_factor(int val, int min, int max, int out_min, int out_max)
 {
 	if (val < 100 )
-	 	return (15 + (val - min) * (out_max - out_min) / ((max - min) + out_max));
+	 	return (30 + (val - min) * (out_max - out_min) / ((max - min) + out_max));
 	else
-		return ((val - min) * (out_max - out_min) / ((max - min) + out_max));
+		return (30 + (val - min) * (out_max - out_min) / ((max - min) + out_max));
 }
 
 void animation(t_game *game, t_entity *ent)
