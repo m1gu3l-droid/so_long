@@ -76,7 +76,7 @@ void	validations(t_game *game)
 	if (val_vault(game) == 1)
 		quit_game("your map should be surrounded by walls\n", game);
 	if (val_characters(game) == 1)
-		quit_game("your map should have 1 P, 1 E and 1 or more C's\n", game);
+		quit_game("your map should have: P (player), E (exit), C (money) and T (taxes)\n", game);
 	if (val_path_param(game) == false)
 		quit_game("your map should have a valid path\n", game);
 }

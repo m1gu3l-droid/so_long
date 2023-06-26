@@ -72,13 +72,6 @@ typedef struct s_place
 typedef struct s_entity
 {
 	int	frame;
-	int	frame_rate;
-	int	current_rate;
-	int	move_counter;
-	int	move_rate;
-	int	animate_speed;
-	int	current_speed;
-	int	status;
 	t_place	pre;
 	t_place	pos;
 }				t_entity;

@@ -53,7 +53,6 @@ void	coins_counter(t_game *game)
 			95, 0x00FFFE61, str);
 		mlx_string_put(game->mlx, game->win, 20,
 			95, 0x00FFFFFF, mvs);
-		free(mvs);
 	}
 	else
 	{
@@ -61,8 +60,8 @@ void	coins_counter(t_game *game)
 			88, 0x00FFFE61, "BUY");
 		mlx_string_put(game->mlx, game->win, 15,
 			108, 0x00FFFE61, "FOOD");
-		free(mvs);
 	}
+	free(mvs);
 }
 
 int	update(t_game *game)

@@ -18,6 +18,7 @@ void	start_map(t_game *game)
 	game->height = 0;
 	game->direction = 0;
 	game->collect = 0;
+	game->num_play = 0;
 	game->num_tax = 0;
 	game->val_col = 0;
 	game->score = 0;
@@ -35,9 +36,7 @@ void	start_entities(t_game *game)
 
 	i = 0;
 	p = (t_place){-1, -1};
-	game->me.frame_rate = F_CALLS;
-	game->me.animate_speed = A_CALLS;
-	game->taxes = ft_calloc(game->num_tax, sizeof(t_entity));
+	game->taxes = calloc(game->num_tax, sizeof(t_entity));
 	if (!game->taxes)
 		end_game(game, 4);
 	while (++p.y < game->height)

@@ -51,6 +51,18 @@ void	free_sprite(t_game *game)
 		mlx_destroy_image(game->mlx, game->pics.i_floor);
 	if (game->pics.i_me_food)
 		mlx_destroy_image(game->mlx, game->pics.i_me_food);
+	if (game->pics.i_ivared)
+		mlx_destroy_image(game->mlx, game->pics.i_ivared);
+	if (game->pics.i_ivawhite)
+		mlx_destroy_image(game->mlx, game->pics.i_ivawhite);
+	if (game->pics.p_left)
+		mlx_destroy_image(game->mlx, game->pics.p_left);
+	if (game->pics.p_right)
+		mlx_destroy_image(game->mlx, game->pics.p_right);
+	if (game->pics.p_up)
+		mlx_destroy_image(game->mlx, game->pics.p_up);
+	if (game->pics.p_down)
+		mlx_destroy_image(game->mlx, game->pics.p_down);
 	mlx_destroy_display(game->mlx);
 	free_layout(game);
 	free(game->mlx);
@@ -70,6 +82,7 @@ int	closure(t_game *game)
 {
 	mlx_destroy_window(game->mlx, game->win);
 	free_sprite(game);
+	free(game->taxes);
 	if (game->dying == -1)
 		ft_printf("-.- game over! -.-\n", game->moves);
 	exit(0);
