@@ -48,6 +48,20 @@ void	sprite_to_map_bonus(int x, int y, char c, t_game *game)
 		render(game, game->pics.i_me_food, x, y);
 }
 
+void	counter(t_game *game)
+{
+	char	*mvs;
+	char	*str;
+
+	str = "Moves: ";
+	mvs = ft_itoa(game->moves);
+	mlx_string_put(game->mlx, game->win, 15,
+		25, 0x0000CDCD, str);
+	mlx_string_put(game->mlx, game->win, 15,
+		45, 0x00FFFFFF, mvs);
+	free(mvs);
+}
+
 void	render_sprite_bonus(t_game *game)
 {
 	int	y;
@@ -65,4 +79,5 @@ void	render_sprite_bonus(t_game *game)
 		x = 0;
 		y++;
 	}
+	counter(game);
 }

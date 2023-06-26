@@ -16,12 +16,12 @@ void	end_game(t_game *game, int a)
 {
 	if (a == 2)
 	{
-		ft_printf("move: %d\n-.- yey, you bought food! -.- \n", game->moves);
+		ft_printf("🍲🍲🍲  YUMMY  🍲🍲🍲\n", game->moves);
 		closure(game);
 	}
 	if (a == 3)
 	{
-		ft_printf("-.- nothing is certain, but death and taxes -.- \n");
+		ft_printf("💸💸💸  nothing is certain, but death and taxes 💸💸💸\n");
 		closure(game);
 	}
 	if (a == 4)
@@ -56,6 +56,7 @@ void	input_move_bonus(t_game *game, int x, int y, int key)
 	outcome = val_move_bonus(game, y, x, key);
 	if (outcome != -1)
 	{
+		game->moves++;
 		game->direction = key;
 		game->me.pos.y = y;
 		game->me.pos.x = x;
@@ -70,7 +71,6 @@ void	input_move_bonus(t_game *game, int x, int y, int key)
 			game->layout[y][x] = 'P';
 		if (game->layout[y][x] == 'E')
 			game->layout[y][x] = 'E';
-//		render_sprite_bonus(game);
 	}
 }
 
@@ -78,7 +78,7 @@ int	control_key_bonus(int key, t_game *game)
 {
 	int	y;
 	int	x;
-	
+
 	if (game->me.pos.y > 0 && game->me.pos.y < game->height)
 		game->me.pre.y = game->me.pos.y;
 	if (game->me.pos.x > 0 && game->me.pos.x < game->width)

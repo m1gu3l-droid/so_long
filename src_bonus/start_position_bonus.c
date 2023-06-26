@@ -30,8 +30,8 @@ void	start_map(t_game *game)
 
 void	start_entities(t_game *game)
 {
-	int	i;
-	t_place	p;
+	int		i;
+	t_place		p;
 
 	i = 0;
 	p = (t_place){-1, -1};
@@ -46,12 +46,8 @@ void	start_entities(t_game *game)
 		while (++p.x < game->width)
 		{
 			if (game->layout[p.y][p.x] != 'T')
-				continue;
-			game->taxes[i].frame = 0 % T_FRAMES;
-			game->taxes[i].frame_rate = F_CALLS;
-			game->taxes[i].move_rate = rand() % M_CALLS + M_CALLS;
-			game->taxes[i].animate_speed = A_CALLS;
-			game->taxes[i].status = 0;
+				continue ;
+			game->taxes[i].frame = 0;
 			game->taxes[i].pre = p;
 			game->taxes[i++].pos = p;
 		}
