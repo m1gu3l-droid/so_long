@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   closure.c                                          :+:      :+:    :+:   */
+/*   closure_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fnovais- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 23:53:55 by fnovais-          #+#    #+#             */
-/*   Updated: 2023/06/12 03:38:38 by fnovais-         ###   ########.fr       */
+/*   Updated: 2023/06/26 19:33:24 by fnovais-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,6 @@ void	free_sprite(t_game *game)
 	if (game->pics.p_down)
 		mlx_destroy_image(game->mlx, game->pics.p_down);
 	mlx_destroy_display(game->mlx);
-	free_layout(game);
-	free(game->mlx);
 }
 
 void	quit_game(char *str, t_game *game)
@@ -75,6 +73,7 @@ void	quit_game(char *str, t_game *game)
 		free_layout(game);
 	if (game->path == 0)
 		free_layback(game);
+	free(game->taxes);
 	exit(0);
 }
 
@@ -83,6 +82,8 @@ int	closure(t_game *game)
 	mlx_destroy_window(game->mlx, game->win);
 	free_sprite(game);
 	free(game->taxes);
+	free_layout(game);
+	free(game->mlx);
 	if (game->dying == -1)
 		ft_printf("-.- game over! -.-\n", game->moves);
 	exit(0);

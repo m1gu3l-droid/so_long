@@ -6,7 +6,7 @@
 /*   By: fnovais- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 03:45:23 by fnovais-          #+#    #+#             */
-/*   Updated: 2023/06/20 02:52:14 by fnovais-         ###   ########.fr       */
+/*   Updated: 2023/06/26 19:30:29 by fnovais-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ typedef struct s_place
 // structure of the entity: either enemy or player
 typedef struct s_entity
 {
-	int	frame;
+	int		frame;
 	t_place	pre;
 	t_place	pos;
 }				t_entity;
@@ -185,12 +185,13 @@ int		control_key_bonus(int key, t_game *game);
 void	sprite_to_map_bonus(int x, int y, char c, t_game *game);
 void	render_sprite_bonus(t_game *game);
 void	ft_putenemy(int x, int y, t_entity *img, t_game *game);
-int	animate(t_game *game);
+int		animate(t_game *game);
 void	ft_putplayer(int x, int y, t_game *game);
-int	update(t_game *game);
+int		update(t_game *game);
 void	animation(t_game *game, t_entity *ent);
 void	render(t_game *game, t_img *img, int x, int y);
 void	start_entities(t_game *game);
 void	end_game(t_game *game, int a);
+void	coins_counter(t_game *game);
 
 #endif

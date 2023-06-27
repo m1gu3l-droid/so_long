@@ -71,7 +71,9 @@ void	input_move_bonus(t_game *game, int x, int y, int key)
 			game->layout[y][x] = 'P';
 		if (game->layout[y][x] == 'E')
 			game->layout[y][x] = 'E';
+		render_sprite_bonus(game);
 	}
+	coins_counter(game);
 }
 
 int	control_key_bonus(int key, t_game *game)

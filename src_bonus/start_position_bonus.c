@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   start_position.c                                   :+:      :+:    :+:   */
+/*   start_position_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fnovais- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 23:38:24 by fnovais-          #+#    #+#             */
-/*   Updated: 2023/06/14 01:15:25 by fnovais-         ###   ########.fr       */
+/*   Updated: 2023/06/26 19:31:06 by fnovais-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,11 @@ void	start_map(t_game *game)
 void	start_entities(t_game *game)
 {
 	int		i;
-	t_place		p;
+	t_place	p;
 
 	i = 0;
 	p = (t_place){-1, -1};
-	game->taxes = calloc(game->num_tax, sizeof(t_entity));
+	game->taxes = ft_calloc(game->num_tax, sizeof(t_entity));
 	if (!game->taxes)
 		end_game(game, 4);
 	while (++p.y < game->height)

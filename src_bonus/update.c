@@ -76,8 +76,6 @@ int	update(t_game *game)
 		animation(game, &game->taxes[i]);
 	factor = delay_factor(game->num_tax);
 	delay = M_CALLS * factor;
-	render_sprite_bonus(game);
-	coins_counter(game);
 	usleep(delay);
 	return (1);
 }
