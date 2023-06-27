@@ -6,7 +6,7 @@
 /*   By: fnovais- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 02:33:04 by fnovais-          #+#    #+#             */
-/*   Updated: 2023/06/26 19:31:57 by fnovais-         ###   ########.fr       */
+/*   Updated: 2023/06/27 20:19:19 by fnovais-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ int	val_char(t_game *game)
 {
 	int	i;
 	int	j;
+
 	i = 0;
 	j = 0;
 	while (j < game->height)
@@ -69,7 +70,7 @@ int	val_char(t_game *game)
 		while (i < game->width)
 		{
 			if (game->layout[j][i] != '1' && game->layout[j][i] != '0'
-				&& game->layout[j][i] != 'C' && game->layout[j][i] != 'P' 
+				&& game->layout[j][i] != 'C' && game->layout[j][i] != 'P'
 					&& game->layout[j][i] != 'E' && game->layout[j][i] != 'T')
 				return (1);
 			i++;
