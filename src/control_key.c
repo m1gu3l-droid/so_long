@@ -28,7 +28,8 @@ int	val_move(t_game *game, int y, int x, int key)
 		ft_printf("move: %d\n-.- boring -.- \n", game->moves);
 		closure(game);
 	}
-	ft_printf("move: %d\n", game->moves++);
+	printf("move: %3d\r", game->moves++);
+	fflush(stdout);
 	return (0);
 }
 
