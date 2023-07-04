@@ -25,6 +25,7 @@ SO_LONG = so_long
 SO_LONG_BONUS = so_long_bonus
 
 LIBFTFILES = libft/*c
+
 SRC =	src/so_long.c src/read_map.c src/start_position.c src/render_sprite.c \
 	src/access_sprite.c src/closure.c src/control_key.c \
 	src/validations.c src/val_path.c\
@@ -71,7 +72,7 @@ $(SO_LONG): $(OBJ) $(LIBFT) $(MLX)
 
 $(SO_LONG_BONUS): $(OBJ_BONUS) $(LIBFT) $(MLX)
 	@echo $(CURSIVE)$(YELLOW) "     - Compiling $(SO_LONG_BONUS)..." $(NONE)
-	$(CC) $(CFLAGS) -pthread $(OBJ_BONUS) $(LIBFT) $(CCMLX) -o $(SO_LONG_BONUS) -pthread
+	$(CC) $(CFLAGS) -pthread $(OBJ_BONUS) $(LIBFT) $(CCMLX) -o $(SO_LONG_BONUS)
 	@echo $(GREEN)"      - Compiled -"$(NONE)
 
 norm:
